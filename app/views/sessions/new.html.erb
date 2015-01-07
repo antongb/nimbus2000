@@ -1,5 +1,5 @@
-<h2>Please Sign Up:</h2>
-<form id="new-user" action="/users" method="post">
+<h2>Please Sign In:</h2>
+<form id="new-user" action="/session" method="post">
   <%= auth_token_input %>
   <label>
     <strong>Username:</strong>
@@ -11,7 +11,7 @@
     <input type="password" name="user[password]" value="">
   </label>
   <br>
-  <input type="submit" value="Sign Up!">
+  <input type="submit" value="Sign In!">
 </form>
 <br>
-Or <a href="/session/new">sign in!</a>
+Or <a href="/users/new">sign up!</a>

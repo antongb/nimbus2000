@@ -1,0 +1,16 @@
+<h2>Upload a track!</h2>
+
+<form id="upload-track" action="/tracks" method="post">
+  <%= auth_token_input %>
+  <label>
+    <strong>Title: </strong>
+    <input type="text" name="track[title]" value="">
+  </label>
+  <br>
+  <label>
+    <strong>Cover Art URL (optional):</strong>
+    <input type="text" name="track[cover_art_url]" value="">
+  </label>
+  <br>
+  <input type="submit" value="Upload!">
+</form>

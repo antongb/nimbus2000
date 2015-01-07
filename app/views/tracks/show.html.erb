@@ -1,0 +1,5 @@
+<h2><%= @track.title %></h2>
+
+<% if @track.cover_art_url %>
+  <img src="<%= @track.cover_art_url %>" alt="<%= @track.title %>" />
+<% end %>

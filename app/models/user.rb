@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
   validates :username, :password_digest, presence: true
-  validates :password, length: { minimum: 8, allow_nil: true }
+  validates :password, confirmation: true
+  validates :password, length: { minimum: 8, allow_blank: true }
+  validates :bio, length: { maximum: 1000 }
+  validates :facebook_url, format: { with: /\A(https?:\/\/)?facebook.com/, allow_blank: true}
+  validates :twitter_url, format: { with: /\A(https?:\/\/)?twitter.com/, allow_blank: true}
+  validates :instagram_url, format: { with: /\A(https?:\/\/)?instagram.com/, allow_blank: true}
+  validates :youtube_url, format: { with: /\A(https?:\/\/)?youtube.com/, allow_blank: true}
 
   attr_reader :password
 
@@ -33,4 +39,5 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
+
 end

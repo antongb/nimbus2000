@@ -1,0 +1,62 @@
+<form id="edit-profile" action="/profile" method="post">
+  <%= auth_token_input %>
+  <%= method_input(:patch) %>
+  <label>
+    Old Password:
+    <input type="password" name="old_password" value="">
+
+  </label><br>
+  <label>
+    New Password:
+    <input type="password" name="user[password]" value="">
+
+    <label>
+      Confirm New Password:
+      <input type="password" name="user[password_confirmation]" value="">
+    </label>
+  </label><br><br>
+
+  <label>
+    Avatar Image:
+    <input type="text" name="user[avatar_url]" value="<%= @user.avatar_url %>">
+  </label><br>
+
+  <label>
+    Bio (1000 chars max):
+    <textarea name="user[bio]"><%= @user.bio %></textarea>
+  </label>
+
+  <label>
+    Social Media etc.
+  </label>
+
+  <ul>
+    <li>
+      <label>Personal Website:
+        <input type="text" name="user[website_url]" value="<%= @user.website_url %>">
+      </label>
+    </li>
+    <li>
+      <label>Facebook:
+        <input type="text" name="user[facebook_url]" value="<%= @user.facebook_url %>">
+      </label>
+    </li>
+    <li>
+      <label>Twitter:
+        <input type="text" name="user[twitter_url]" value="<%= @user.twitter_url %>">
+      </label>
+    </li>
+    <li>
+      <label>Youtube:
+        <input type="text" name="user[youtube_url]" value="<%= @user.youtube_url %>">
+      </label>
+    </li>
+    <li>
+      <label>Instagram:
+        <input type="text" name="user[instagram_url]" value="<%= @user.instagram_url %>">
+      </label>
+    </li>
+  </ul>
+
+  <input type="submit" value="Update">
+</form>

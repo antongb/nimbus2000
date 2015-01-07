@@ -1,6 +1,8 @@
 <h2>Upload a track!</h2>
 
-<form id="upload-track" action="/tracks" method="post">
+<%= render partial: "form", locals: {track: @track} %>
+
+<!-- <form id="upload-track" action="/tracks" method="post">
   <%= auth_token_input %>
   <label>
     <strong>Title: </strong>
@@ -13,4 +15,4 @@
   </label>
   <br>
   <input type="submit" value="Upload!">
-</form>
+</form> -->

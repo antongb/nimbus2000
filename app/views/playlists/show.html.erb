@@ -1,0 +1,5 @@
+<h2><%= @playlist.title %></h2>
+
+<% @playlist.tracks.each do |track| %>
+  <a href="<%= track_url(track) %>"><%= track.title %></a><br>
+<% end %>

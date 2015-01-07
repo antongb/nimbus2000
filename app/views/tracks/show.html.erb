@@ -6,6 +6,10 @@ Uploaded by <strong><a href="<%= user_url(@track.uploader) %>"><%= @track.upload
   <img src="<%= @track.cover_art_url %>" alt="<%= @track.title %>" /><br>
 <% end %>
 
+<form id="add-to-playlist" action="index.html" method="post">
+
+</form>
+
 <% if current_user_owns_track?(@track) %>
 
   <a href="<%= edit_track_url(@track) %>">Edit track</a>

@@ -1,1 +1,4 @@
 <h2><%= @user.username %>'s user page</h2>
+<% @user.tracks.each do |track| %>
+  <a href="<%= track_url(track) %>"><%= track.title %></a><br>
+<% end %>

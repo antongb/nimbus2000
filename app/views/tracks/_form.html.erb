@@ -1,0 +1,15 @@
+<form id="track-form" action="<%= track.new_record? ? "/tracks" : track_url(track) %>" method="post">
+  <%= auth_token_input %>
+  <%= method_input(:patch) unless track.new_record? %>
+  <label>
+    <strong>Title: </strong>
+    <input type="text" name="track[title]" value="<%= track.title %>">
+  </label>
+  <br>
+  <label>
+    <strong>Cover Art URL (optional):</strong>
+    <input type="text" name="track[cover_art_url]" value="<%= track.cover_art_url %>">
+  </label>
+  <br>
+  <input type="submit" value="<%= track.new_record? ? "Upload!" : "Update!" %>">
+</form>

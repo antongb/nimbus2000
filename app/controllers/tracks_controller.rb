@@ -29,7 +29,7 @@ class TracksController < ApplicationController
   end
 
   def update
-    if @track.update_attributes(track_params)
+    if @track.update(track_params)
       redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages

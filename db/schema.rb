@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107191700) do
+ActiveRecord::Schema.define(version: 20150107212654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlist_memberships", force: true do |t|
+    t.integer  "track_id",    null: false
+    t.integer  "playlist_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "playlist_memberships", ["track_id", "playlist_id"], name: "index_playlist_memberships_on_track_id_and_playlist_id", unique: true, using: :btree
+
+  create_table "playlists", force: true do |t|
+    t.string   "title",       null: false
+    t.integer  "owner_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+  end
+
+  add_index "playlists", ["owner_id"], name: "index_playlists_on_owner_id", using: :btree
 
   create_table "tracks", force: true do |t|
     t.string   "title",         null: false

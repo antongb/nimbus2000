@@ -11,4 +11,7 @@ class Track < ActiveRecord::Base
 
   has_many :likes
   has_many :likers, through: :likes, source: :liker
+
+  has_many :taggings
+  has_many :tags, through: :taggings, source: :tag
 end

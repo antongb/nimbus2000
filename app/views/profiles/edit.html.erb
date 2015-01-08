@@ -19,6 +19,8 @@
 </form><br><br>
 
 <form id="edit-profile" action="/profile" method="post">
+  <%= auth_token_input %>
+  <%= method_input(:patch) %>
   <label>
     Avatar Image:
     <input type="text" name="user[avatar_url]" value="<%= @user.avatar_url %>">

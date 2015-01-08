@@ -22,7 +22,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @track = Track.includes(comments: :user).find(params[:id])
+    @track = Track.includes(comments: [:user, parent_comment: :user]).find(params[:id])
   end
 
   def edit

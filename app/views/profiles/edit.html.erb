@@ -1,4 +1,4 @@
-<form id="edit-profile" action="/profile" method="post">
+<form id="change-password" action="/profile" method="post">
   <%= auth_token_input %>
   <%= method_input(:patch) %>
   <label>
@@ -14,8 +14,11 @@
       Confirm New Password:
       <input type="password" name="user[password_confirmation]" value="">
     </label>
-  </label><br><br>
+  </label>
+  <input type="submit" value="Change Password">
+</form><br><br>
 
+<form id="edit-profile" action="/profile" method="post">
   <label>
     Avatar Image:
     <input type="text" name="user[avatar_url]" value="<%= @user.avatar_url %>">

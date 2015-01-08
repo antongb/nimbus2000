@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :ensure_signed_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_signed_in, only: [:new, :create, :edit, :update, :destroy, :like, :unlike]
   before_action :ensure_track_owner, only: [:edit, :update, :destroy]
 
   def new
@@ -22,7 +22,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @track = Track.includes(comments: [:user, parent_comment: :user]).find(params[:id])
+    @track = Track.includes({comments: [:user, parent_comment: :user]}, :likes).find(params[:id])
   end
 
   def edit
@@ -40,6 +40,21 @@ class TracksController < ApplicationController
   def destroy
     @track.destroy
     redirect_to user_url(current_user)
+  end
+
+  def like
+    @track = Track.find(params[:id])
+    unless Like.create(track_id: params[:id], liker_id: current_user.id)
+      flash.now[:errors] = ["Sorry, something went wrong."]
+    end
+    render :show
+  end
+
+  def unlike
+    @track = Track.find(params[:id])
+    @like = @track.likes.find_by(liker_id: current_user.id)
+    @like.destroy
+    render :show
   end
 
   private

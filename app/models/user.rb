@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   has_many :tracks, foreign_key: :uploader_id
   has_many :playlists, foreign_key: :owner_id
 
+  has_many :likes, foreign_key: :liker_id
+  has_many :liked_tracks, through: :likes, source: :track
+
   after_initialize :ensure_session_token
 
   def password=(password)
@@ -33,6 +36,10 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom.urlsafe_base64
     self.save!
     self.session_token
+  end
+
+  def likes?(track_id)
+    self.likes.where(track_id: track_id).exists?
   end
 
   private

@@ -5,6 +5,14 @@ Uploaded by <strong><a href="<%= user_url(@track.uploader) %>"><%= @track.upload
 <% if @track.cover_art_url %>
   <img src="<%= @track.cover_art_url %>" alt="<%= @track.title %>" /><br>
 <% end %>
+
+<% if current_user.likes?(@track.id) %>
+  <a href="<%= unlike_track_url(@track.id) %>">[Unlike]</a>
+<% else %>
+  <a href="<%= like_track_url(@track.id) %>">[Like]</a>
+<% end %> - <%= @track.likes.count %> likes
+<br>
+
 <strong>Add to playlist:</strong><br>
 <form id="add-to-playlist" action="/playlist_memberships" method="post">
   <%= auth_token_input %>
@@ -37,7 +45,7 @@ Uploaded by <strong><a href="<%= user_url(@track.uploader) %>"><%= @track.upload
   <input type="submit" value="Post">
 </form>
 
-<h3>Comments</h3>
+<h3><%= @track.comments.count %> Comments</h3>
 <ul>
   <% @track.comments.each do |comment| %>
     <li>

@@ -8,4 +8,7 @@ class Track < ActiveRecord::Base
   has_many :comments
 
   has_many :playlists, through: :memberships, source: :playlist
+
+  has_many :likes
+  has_many :likers, through: :likes, source: :liker
 end

@@ -3,6 +3,13 @@
 <% if @user.avatar_url %>
   <img src="<%= @user.avatar_url %>" alt="<%= @user.username %>" /><br>
 <% end %>
+<h3><%= @user.username %>'s Tracks</h3>
 <% @user.tracks.each do |track| %>
   <a href="<%= track_url(track) %>"><%= track.title %></a><br>
+<% end %>
+<br>
+
+<h3><%= @user.username %>'s Playlists</h3>
+<% @user.playlists.each do |playlist| %>
+  <a href="<%= playlist_url(playlist) %>"><%= playlist.title %></a>
 <% end %>

@@ -1,7 +1,9 @@
 <form id="playlist-form" action="<%= playlist.new_record? ? "/playlists" : playlist_url(playlist) %>" method="post">
   <%= auth_token_input %>
   <%= method_input(:patch) unless playlist.new_record? %>
-
+  <% if track %>
+    <input type="hidden" name="track" value="<%= track %>">
+  <% end %>
   <label>
     <strong>Title: </strong>
     <input type="text" name="playlist[title]" value="<%= playlist.title %>">

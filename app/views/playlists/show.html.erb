@@ -1,6 +1,6 @@
 <h2><%= @playlist.title %></h2>
 
-<% @playlist.memberships.includes(:track).each do |membership| %>
+<% @playlist.memberships.each do |membership| %>
   <% track = membership.track %>
   <a href="<%= track_url(track) %>"><%= track.title %></a>
   <% if current_user.id == @playlist.owner_id %>

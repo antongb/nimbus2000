@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :tracks, foreign_key: :uploader_id
+  has_many :playlists, foreign_key: :owner_id
 
   after_initialize :ensure_session_token
 

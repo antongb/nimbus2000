@@ -3,5 +3,7 @@ class Track < ActiveRecord::Base
 
   belongs_to :uploader, class_name: "User"
 
-  has_many :playlists, through: :playlist_memberships, source: :playlist
+  has_many :memberships, class_name: "PlaylistMembership"
+
+  has_many :playlists, through: :memberships, source: :playlist
 end

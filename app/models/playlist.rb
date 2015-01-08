@@ -3,8 +3,8 @@ class Playlist < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User"
 
-  has_many :playlist_memberships
+  has_many :memberships, class_name: "PlaylistMembership"
 
-  has_many :tracks, through: :playlist_memberships, source: :track
+  has_many :tracks, through: :memberships, source: :track
 
 end

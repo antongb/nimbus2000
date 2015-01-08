@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :playlists, only: :index
   end
+
+  resources :playlist_memberships, only: [:create, :destroy]
   resources :playlists, except: :index
 end

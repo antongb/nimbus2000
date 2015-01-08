@@ -16,7 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:playlists).find(params[:id])
+    if current_user.id == @user.id
+      @playlists = @user.playlists
+    else
+      @playlists = @user.playlists.where(private: false)
+    end
   end
 
   private

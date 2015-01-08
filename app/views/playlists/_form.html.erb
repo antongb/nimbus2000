@@ -14,6 +14,12 @@
     <textarea name="playlist[description]"><%= playlist.description %></textarea>
   </label>
 
+  <label>
+    Private?
+    <input type="checkbox" name="playlist[private]" value="true"
+      <%= "checked" if playlist.private? %>>
+  </label>
+
   <input type="submit" name="some_name" value="<%= playlist.new_record? ? "Create!" : "Update!" %>">
 
 </form>

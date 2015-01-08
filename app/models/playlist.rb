@@ -7,4 +7,8 @@ class Playlist < ActiveRecord::Base
 
   has_many :tracks, through: :memberships, source: :track
 
+  def public?
+    !private?
+  end
+
 end

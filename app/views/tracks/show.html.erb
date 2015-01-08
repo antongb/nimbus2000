@@ -15,6 +15,7 @@ Uploaded by <strong><a href="<%= user_url(@track.uploader) %>"><%= @track.upload
     <% end %>
   </select>
   <input type="submit" value="Add">
+  <a href="/playlists/new?track=<%= @track.id %>">Add to new playlist</a>
 </form>
 
 <% if current_user_owns_track?(@track) %>

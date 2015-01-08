@@ -41,8 +41,12 @@ Uploaded by <strong><a href="<%= user_url(@track.uploader) %>"><%= @track.upload
 <ul>
   <% @track.comments.each do |comment| %>
     <li>
-      <strong><%= comment.user.username %> on <%= comment.created_at %>:</strong>
+      <strong><%= comment.user.username %> on <%= comment.created_at.to_s(:short) %>
+      <%= "in reply to " + comment.parent_comment.user.username if comment.parent_comment %>:
+
+      </strong>
       <p><%= comment.body %></p>
+      <a href="<%= new_track_comment_url(@track) %>?parent=<%= comment.id %>">[Reply]</a>
       <% if comment.user_id == current_user.id %>
         <a href="<%= edit_comment_url(comment) %>">[Edit]</a>
         <form action="<%= comment_url(comment) %>" method="post">

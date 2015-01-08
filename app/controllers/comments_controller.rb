@@ -5,6 +5,11 @@ class CommentsController < ApplicationController
     redirect_to track_url(params[:track_id])
   end
 
+  def new
+    @comment = Comment.new(parent_id: params[:parent])
+    @track_id = params[:track_id]
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
@@ -30,7 +35,7 @@ class CommentsController < ApplicationController
     else
       flash[:errors] = @comment.errors.full_messages
       redirect_to track_url(@comment.track_id)
-    end       
+    end
   end
 
   private

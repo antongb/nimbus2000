@@ -1,11 +1,18 @@
 class PlaylistsController < ApplicationController
+  before_action :ensure_playlist_owner, only: [:edit, :update, :destroy]
 
   def index
-    @playlists = Playlist.find_by(owner_id: params[:user_id])
+    @playlists = Playlist.where(owner_id: params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def show
     @playlist = Playlist.includes(memberships: :track).find(params[:id])
+    unless (@playlist.public? || @playlist.owner_id == current_user.id)
+      redirect_to root_url
+    else
+      render :show
+    end
   end
 
   def new
@@ -14,7 +21,6 @@ class PlaylistsController < ApplicationController
   end
 
   def edit
-    @playlist = Playlist.find(params[:id])
   end
 
   def create
@@ -32,7 +38,6 @@ class PlaylistsController < ApplicationController
   end
 
   def update
-    @playlist = Playlist.find(params[:id])
     if @playlist.update(playlist_params)
       redirect_to playlist_url(@playlist)
     else
@@ -42,9 +47,19 @@ class PlaylistsController < ApplicationController
 
   end
 
+  def destroy
+    @playlist.destroy
+    redirect_to user_playlists_url(@playlist.owner_id)
+  end
+
   private
 
   def playlist_params
-    params.require(:playlist).permit([:title, :description])
+    params.require(:playlist).permit([:title, :description, :private])
+  end
+
+  def ensure_playlist_owner
+    @playlist = Playlist.find(params[:id])
+    redirect_to root_url unless current_user.id == @playlist.owner_id
   end
 end

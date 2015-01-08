@@ -9,7 +9,7 @@
 <% end %>
 <br>
 
-<h3><%= @user.username %>'s Playlists</h3>
-<% @user.playlists.each do |playlist| %>
+<h3><a href="<%= user_playlists_url(@user) %>"><%= @user.username %>'s Playlists</a></h3>
+<% @playlists.each do |playlist| %>
   <a href="<%= playlist_url(playlist) %>"><%= playlist.title %></a>
 <% end %>

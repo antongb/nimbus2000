@@ -64,10 +64,6 @@ class TracksController < ApplicationController
   end
 
   def ensure_track_owner
-    @track = Track.find(params[:id])
-    unless current_user_owns_track?(@track)
-      flash[:errors] = ["You must be the uploader of this track to do that!"]
-      redirect_to root_url
-    end
+    @track = current_user.tracks.find(params[:id])
   end
 end

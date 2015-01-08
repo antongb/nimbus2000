@@ -28,3 +28,28 @@ Uploaded by <strong><a href="<%= user_url(@track.uploader) %>"><%= @track.upload
     <input type="submit" value="Delete track">
   </form>
 <% end %>
+
+<h3>Post Comment</h3>
+<form action="/tracks/<%= @track.id %>/comments" method="post">
+  <%= auth_token_input %>
+  <input type="hidden" name="comment[track_id]" value="<%= @track.id %>">
+  <textarea name="comment[body]"></textarea>
+  <input type="submit" value="Post">
+</form>
+
+<h3>Comments</h3>
+<ul>
+  <% @track.comments.each do |comment| %>
+    <li>
+      <strong><%= comment.user.username %> on <%= comment.created_at %>:</strong>
+      <p><%= comment.body %></p>
+      <% if comment.user_id == current_user.id %>
+        <form action="<%= comment_url(comment) %>" method="post">
+          <%= auth_token_input %>
+          <%= method_input(:delete) %>
+          <input type="submit" value="Delete comment">
+        </form>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

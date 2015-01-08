@@ -5,5 +5,7 @@ class Track < ActiveRecord::Base
 
   has_many :memberships, class_name: "PlaylistMembership"
 
+  has_many :comments
+
   has_many :playlists, through: :memberships, source: :playlist
 end

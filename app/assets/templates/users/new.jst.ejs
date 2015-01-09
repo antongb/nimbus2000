@@ -1,0 +1,21 @@
+<h2>Please Sign Up:</h2>
+<form id="new-user" action="/users" method="post">
+  <label>
+    <strong>Username:</strong>
+    <input type="text" name="user[username]" value="">
+  </label>
+  <br>
+  <label>
+    <strong>Password:</strong>
+    <input type="password" name="user[password]" value="">
+  </label>
+  <br>
+  <label>
+    <strong>Confirm Password:</strong>
+    <input type="password" name="user[password_confirmation]" value="">
+  </label>
+  <br>
+  <button id="signup">Sign up!</button>
+</form>
+<br>
+Or <a href="/session/new">sign in!</a>

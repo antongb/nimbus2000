@@ -2,17 +2,19 @@
 <html>
 <head>
   <title>Soundclone</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%#= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<% unless request.fullpath.match("backbone") %>
   <h1><a href="/">SoundClone!</a></h1>
   <% if flash[:errors] %>
     <%= flash[:errors].join("<br>").html_safe %>
     <br><br>
   <% end %>
+  <% %>
   <% if signed_in? %>
     <h2>Hello, <a href="<%= user_url(current_user) %>"><%= current_user.username %>!</a></h2>
     <a href="/tracks/new">Upload track</a><br>
@@ -25,6 +27,7 @@
   <% else %>
     <a href="/session/new">Sign in</a> or <a href="/users/new">Sign up</a>!
   <% end %>
+<% end %>
 
 <%= yield %>
 

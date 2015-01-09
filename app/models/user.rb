@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  validates :username, :password_digest, presence: true
-  validates :password, confirmation: true
-  validates :password, length: { minimum: 8, allow_nil: true }
+  validates :username, :password_digest, presence: true, uniqueness: true
+  validates :password, confirmation: true, length: { minimum: 8, allow_nil: true }
   validates :bio, length: { maximum: 1000 }
   validates :facebook_url, format: { with: /\A(https?:\/\/)?facebook.com/, allow_blank: true}
   validates :twitter_url, format: { with: /\A(https?:\/\/)?twitter.com/, allow_blank: true}

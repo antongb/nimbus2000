@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  namespsace :api do
-    
+  root 'tracks#index'
+
+  namespace :api, defaults: {format: :json} do
+    resources :users
   end
 
+  get 'backbone', to: 'backbone#index'
 
-
-
-  root 'tracks#index'
   resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
   resources :tracks do

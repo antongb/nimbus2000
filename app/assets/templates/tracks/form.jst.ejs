@@ -1,0 +1,13 @@
+<h2><%= track.isNew() ? "Upload a track!" : "Edit " + track.escape('title') %></h2>
+
+  <label>
+    <strong>Title: </strong>
+    <input type="text" name="track[title]" value="<%= track.escape('title') %>">
+  </label>
+  <br>
+  <label>
+    <strong>Cover Art URL (optional):</strong>
+    <input type="text" name="track[cover_art_url]" value="<%= track.escape('cover_art_url') %>">
+  </label>
+  <br>
+  <button id="form-submit"><%= track.isNew() ? "Upload!" : "Update!" %></button>

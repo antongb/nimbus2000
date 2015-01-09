@@ -4,7 +4,8 @@ window.Soundclone = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new Soundclone.Routers.Router({$mainEl: $("#content"), $navEl: $("nav")});
+    Backbone.history.start();
   }
 };
 

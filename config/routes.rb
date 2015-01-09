@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   root 'tracks#index'
 
   namespace :api, defaults: {format: :json} do
-    resources :users
+    resources :users do
+      resources :playlists, only: :index
+    end
     resources :tracks
+    resources :playlists, except: :index
   end
 
   get 'backbone', to: 'backbone#index'

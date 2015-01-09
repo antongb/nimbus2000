@@ -1,0 +1,11 @@
+<h2><%= user.escape('username') %></h2>
+
+<% if (user.get('avatar_url')){ %>
+<img src="<%= user.get('avatar_url') %>" alt="<%= user.escape('username') %>" /><br>
+<% } %>
+<% debugger %>
+<h3><%= user.escape('username') %>'s Tracks</h3>
+<% user.tracks().each(function(track) { %>
+<a href="#/tracks/<%= track.id %>"><%= track.escape("title") %></a><br>
+<% }); %>
+<br>

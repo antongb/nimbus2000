@@ -1,0 +1,7 @@
+<h2><%= track.escape('title') %></h2>
+
+Uploaded by <strong><a href="#/users/<%= track.get('uploader_id') %>"><%= track.escape('uploader_name') %></a></strong><br>
+
+<% if (track.get('cover_art_url')) { %>
+  <img src="<%= track.get('cover_art_url') %>" alt="<%= track.get('title') %>" /><br>
+<% } %>

@@ -1,0 +1,10 @@
+<h2>All the tracks!</h2>
+<ul>
+  <% tracks.each(function(track) { %>
+    <li>
+      <a href="#/tracks/<%= track.id %>"><%= track.escape('title') %></a>
+      - Uploaded by
+      <strong><a href="#/users/<%= track.get('uploader_id') %>"><%= track.escape('uploader_name') %></a></strong>
+    </li>
+  <% }); %>
+</ul>

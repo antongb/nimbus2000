@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespsace :api do
+    
+  end
+
+
+
+
   root 'tracks#index'
   resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]

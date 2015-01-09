@@ -5,3 +5,10 @@ Uploaded by <strong><a href="#/users/<%= track.get('uploader_id') %>"><%= track.
 <% if (track.get('cover_art_url')) { %>
   <img src="<%= track.get('cover_art_url') %>" alt="<%= track.get('title') %>" /><br>
 <% } %>
+
+<% if (currentUser.id === track.get('uploader_id')) { %>
+
+<a href="#/tracks/<%= track.id %>/edit">Edit track</a>
+<br>
+<button id="delete-track">Delete track</button>
+<% } %>

@@ -23,6 +23,12 @@ class Api::CommentsController < BackboneController
     render :show
   end
 
+  def update
+    @comment = current_user.comments.find(params[:id])
+    @comment.update(comment_params)
+    render :show
+  end
+
   private
 
   def comment_params

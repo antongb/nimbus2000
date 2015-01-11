@@ -20,7 +20,6 @@ Soundclone.Views.TrackAddForm = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var playlistId = parseInt($("#playlist-dropdown").val());
-    debugger
     this.collection.get(playlistId).addTrack(this.model.id);
   }
 })

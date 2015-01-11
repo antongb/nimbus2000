@@ -12,6 +12,10 @@ Soundclone.Collections.Comments = Backbone.Collection.extend({
     } else {
       return 'api/playlists';
     }
+  },
+
+  comparator: function (comment) {
+    return (comment.id * -1);
   }
 
 });

@@ -6,7 +6,8 @@ Soundclone.Views.CommentShow = Backbone.CompositeView.extend({
 
   events: {
       "click button.comment-delete": "destroyComment",
-      "click button.comment-reply": "replyToComment"
+      "click button.comment-reply": "replyToComment",
+      "click button.comment-edit": "editComment"
   },
 
   template: JST['comments/show'],
@@ -29,16 +30,30 @@ Soundclone.Views.CommentShow = Backbone.CompositeView.extend({
   replyToComment: function (event) {
     event.preventDefault();
     var view = this;
-    debugger
     var newComment = new Soundclone.Models.Comment({trackId: this.model.get('track_id')});
     var subView = new Soundclone.Views.CommentForm({
       parentId: this.model.id,
       model: newComment,
       collection: this.collection
     });
-    this.listenTo(view, "submit", function () {
+    this.listenTo(subView, "submit", function () {
       view.removeSubview(".reply-form", subView);
     });
     this.addSubview(".reply-form", subView);
   },
+
+  editComment: function (event) {
+    event.preventDefault();
+    this.$el.empty();
+    var editView = new Soundclone.Views.CommentForm({
+      model: this.model,
+      collection: this.collection,
+    });
+
+    this.listenTo(editView, "submit", function () {
+      editView.remove();
+    });
+
+    this.$el.html(editView.render().$el);
+  }
 });

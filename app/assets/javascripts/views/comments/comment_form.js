@@ -25,13 +25,10 @@ Soundclone.Views.CommentForm = Backbone.View.extend({
       attrs.comment.parent_id = this.parentId;
     }
 
-    debugger
-
     this.model.save(attrs, {
       success: function (model, response) {
         model.set(response);
         that.collection.add(model, {trigger: true});
-        // debugger
         that.trigger("submit");
       }
     });

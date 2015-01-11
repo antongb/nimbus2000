@@ -13,8 +13,6 @@ Soundclone.Views.CommentsIndex = Backbone.CompositeView.extend({
       var showView = new Soundclone.Views.CommentShow({model: comment, collection: that.collection});
       that.addSubview("#comments-list", showView);
     });
-    // debugger
-    // this.attachSubviews();
     return this;
   },
 

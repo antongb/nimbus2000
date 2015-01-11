@@ -1,10 +1,13 @@
 Soundclone.Views.TrackShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.comments = new Soundclone.Collections.Comments({trackId: this.model.id});
     this.addForm = new Soundclone.Views.TrackAddForm({collection: currentUser.playlists, model: this.model});
-    this.likes = new Soundclone.Views.LikesView({model: this.model})
+    this.likesView = new Soundclone.Views.LikesView({model: this.model});
+    this.commentsView = new Soundclone.Views.CommentsRoot({collection: this.comments});
     this.addSubview("#add-to-playlist", this.addForm);
-    this.addSubview("#likes", this.likes);
+    this.addSubview("#likes", this.likesView);
+    this.addSubview("#comments", this.commentsView);
   },
 
   events: {
@@ -25,6 +28,6 @@ Soundclone.Views.TrackShow = Backbone.CompositeView.extend({
       success: function () {
         Backbone.history.navigate("", {trigger: true});
       }
-    })
+    });
   }
-})
+});

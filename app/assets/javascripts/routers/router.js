@@ -23,7 +23,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   tracksIndex: function () {
     var tracks = new Soundclone.Collections.Tracks();
     tracks.fetch();
-    var view = new Soundclone.Views.TracksIndex({collection: tracks})
+    var view = new Soundclone.Views.TracksIndex({collection: tracks});
     this._swapView(view);
   },
 
@@ -34,8 +34,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   },
 
   showUser: function (id) {
-    debugger
-    var user = new Soundclone.Models.User({id: id})
+    var user = new Soundclone.Models.User({id: id});
     user.fetch();
     var view = new Soundclone.Views.UserShow({model: user});
     this._swapView(view);
@@ -50,7 +49,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   showTrack: function (id) {
     var track = new Soundclone.Models.Track({id: id});
     track.fetch();
-    var view = new Soundclone.Views.TrackShow({model: track})
+    var view = new Soundclone.Views.TrackShow({model: track});
     this._swapView(view);
   },
 

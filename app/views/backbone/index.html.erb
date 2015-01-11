@@ -2,7 +2,8 @@
 <script charset="utf-8">
   window.currentUser = {
     id: <%= current_user.id %>,
-    name: "<%= current_user.username %>"
+    name: "<%= current_user.username %>",
+    playlists: new Soundclone.Collections.Playlists({userId: <%= current_user.id %>})
   }
 </script>
 

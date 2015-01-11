@@ -1,6 +1,8 @@
-Soundclone.Views.TrackShow = Backbone.View.extend({
+Soundclone.Views.TrackShow = Backbone.CompositeView.extend({
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync", this.render);
+    this.addForm = new Soundclone.Views.TrackAddForm({collection: currentUser.playlists, model: this.model});
+    this.addSubview("#add-to-playlist", this.addForm);
   },
 
   events: {
@@ -11,6 +13,7 @@ Soundclone.Views.TrackShow = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({track: this.model}));
+    this.attachSubview("#add-to-playlist", this.addForm);
     return this;
   },
 

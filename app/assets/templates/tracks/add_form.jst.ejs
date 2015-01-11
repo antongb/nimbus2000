@@ -1,0 +1,6 @@
+<select id="playlist-dropdown">
+  <% currentUser.playlists.each(function (playlist) { %>
+  <option value="<%= playlist.id %>"><%= playlist.escape('title') %></option>
+  <% }); %>
+</select>
+<button>Add</button>

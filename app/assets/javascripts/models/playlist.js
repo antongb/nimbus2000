@@ -19,10 +19,14 @@ Soundclone.Models.Playlist = Backbone.Model.extend({
 
   addTrack: function (trackId) {
     var url = this.urlRoot + '/' + this.id + '/add_track/' + trackId;
+    var playlist = this;
     var options = {
       url: url,
       type: 'POST',
-      trigger: true
+      trigger: true,
+      success: function () {
+        Backbone.history.navigate('playlists/' + playlist.id, {trigger: true});
+      }
     };
     return this.sync.call(this, null, this, options)
   },
@@ -37,6 +41,7 @@ Soundclone.Models.Playlist = Backbone.Model.extend({
       success: playlist.tracks().remove(track),
       trigger: true
     };
+
     return this.sync.call(this, null, this, options)
   }
 

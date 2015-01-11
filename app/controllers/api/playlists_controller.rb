@@ -1,4 +1,5 @@
 class Api::PlaylistsController < BackboneController
+  before_action :ensure_playlist_owner, only: [:edit, :update, :destroy, :add_track, :remove_track]
 
   def index
     @user = User.includes(:playlists).find(params[:user_id])
@@ -24,7 +25,6 @@ class Api::PlaylistsController < BackboneController
   end
 
   def update
-    @playlist = current_user.playlists.find(params[:id])
     @playlist.update(playlist_params)
     render :show
   end
@@ -33,15 +33,18 @@ class Api::PlaylistsController < BackboneController
     @playlist = Playlist.includes(:tracks, :owner).find(params[:id])
   end
 
+  def destroy
+    @playlist.destroy
+    render :show
+  end
+
   def add_track
-    @playlist = current_user.playlists.find(params[:id])
     track = Track.find(params[:track_id])
     @playlist.tracks << track
     render :show
   end
 
   def remove_track
-    @playlist = current_user.playlists.find(params[:id])
     track = Track.find(params[:track_id])
     @playlist.tracks.delete(track)
     render :show
@@ -51,6 +54,10 @@ class Api::PlaylistsController < BackboneController
 
   def playlist_params
     params.require(:playlist).permit([:title, :description, :private, tracks: []])
+  end
+
+  def ensure_playlist_owner
+    @playlist = current_user.playlists.find(params[:id])
   end
 
 end

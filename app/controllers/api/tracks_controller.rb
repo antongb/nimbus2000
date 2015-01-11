@@ -1,4 +1,4 @@
-class Api::TracksController < ApplicationController
+class Api::TracksController < BackboneController
   def index
     @tracks = Track.includes(:uploader)
     render :index

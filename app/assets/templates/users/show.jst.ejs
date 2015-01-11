@@ -3,9 +3,14 @@
 <% if (user.get('avatar_url')){ %>
 <img src="<%= user.get('avatar_url') %>" alt="<%= user.escape('username') %>" /><br>
 <% } %>
-<% debugger %>
 <h3><%= user.escape('username') %>'s Tracks</h3>
 <% user.tracks().each(function(track) { %>
 <a href="#/tracks/<%= track.id %>"><%= track.escape("title") %></a><br>
 <% }); %>
 <br>
+
+<h3><a href="#/users/<%= user.id %>"><%= user.escape('username') %>'s Playlists</a></h3>
+<% user.playlists().each(function(playlist){ %>
+<a href="#/playlists/<%= playlist.id %>"><%= playlist.escape('title') %></a>
+<br>
+<% }) %>

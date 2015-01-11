@@ -1,13 +1,8 @@
-<h2><%= @user.username %>'s Playlists</h2>
-<% owner = current_user.id == @user.id %>
-<% @playlists.each do |playlist| %>
-  <% next unless (playlist.public? || owner) %>
-  <h3><a href="<%= playlist_url(playlist) %>"><%= playlist.title %></a></h3>
-  <% if owner %>
-    <form action="<%= playlist_url(playlist) %>" method="post">
-      <%= auth_token_input %>
-      <%= method_input(:delete) %>
-      <input type="submit" value="Delete">
-    </form>
-  <% end %>
-<% end %>
+<h2><%= playlists.username %>'s Playlists</h2>
+<% playlists.each(function (playlist){%>
+
+  <h3><a href="#/playlists/<%= playlist.id %>"><%= playlist.escape('title') %></a></h3>
+  <% if (currentUser.id === playlists.userId){%>
+      <button data-id="<%= playlist.id %>">Delete</button>
+  <% } %>
+<% }); %>

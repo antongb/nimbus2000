@@ -9,12 +9,15 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'tracksIndex',
     'users/new': 'newUser',
+    'users/:id/playlists': 'playlistsIndex',
     'users/:id': 'showUser',
     'session/new': 'loginPage',
     'tracks': 'tracksIndex',
     'tracks/new': 'newTrack',
     'tracks/:id': 'showTrack',
-    'tracks/:id/edit': 'editTrack'
+    'tracks/:id/edit': 'editTrack',
+    'playlists/new': 'newPlaylist',
+    'playlists/:id': 'showPlaylist'
   },
 
   tracksIndex: function () {
@@ -31,6 +34,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   },
 
   showUser: function (id) {
+    debugger
     var user = new Soundclone.Models.User({id: id})
     user.fetch();
     var view = new Soundclone.Views.UserShow({model: user});
@@ -56,6 +60,26 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     track.fetch({success: function () {
       this._swapView(view);
     }.bind(this)});
+  },
+
+  playlistsIndex: function (id) {
+    var playlists = new Soundclone.Collections.Playlists({userId: id});
+    playlists.fetch();
+    var view = new Soundclone.Views.PlaylistsIndex({collection: playlists});
+    this._swapView(view);
+  },
+
+  newPlaylist: function () {
+    var playlist = new Soundclone.Models.Playlist();
+    var view = new Soundclone.Views.PlaylistForm({model: playlist});
+    this._swapView(view);
+  },
+
+  showPlaylist: function (id) {
+    var playlist = new Soundclone.Models.Playlist({id: id});
+    playlist.fetch();
+    var view = new Soundclone.Views.PlaylistShow({model: playlist});
+    this._swapView(view)
   },
 
   _swapView: function (view) {

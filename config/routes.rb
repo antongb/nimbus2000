@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     end
     resources :tracks
     resources :playlists, except: :index
+    resources :playlists do
+      member do
+        post 'add_track/:track_id' => 'playlists#add_track'
+        post 'remove_track/:track_id' => 'playlists#remove_track'
+      end
+    end
   end
 
   get 'backbone', to: 'backbone#index'

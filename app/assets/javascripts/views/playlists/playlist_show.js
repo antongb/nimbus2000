@@ -17,7 +17,12 @@ Soundclone.Views.PlaylistShow = Backbone.View.extend({
 
   removeTrack: function (event) {
     event.preventDefault();
+    var view = this;
     var trackId = $(event.currentTarget).data("id")
-    this.model.removeTrack(trackId);
+    this.model.removeTrack(trackId, {
+      success: function () {
+        view.model.fetch();
+      }
+    });
   }
 })

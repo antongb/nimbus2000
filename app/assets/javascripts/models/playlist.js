@@ -31,16 +31,18 @@ Soundclone.Models.Playlist = Backbone.Model.extend({
     return this.sync.call(this, null, this, options)
   },
 
-  removeTrack: function (trackId) {
+  removeTrack: function (trackId, opts) {
     var url = this.urlRoot + '/' + this.id + '/remove_track/' + trackId;
     var track = this.tracks().get({id: trackId})
     var playlist = this;
     var options = {
       url: url,
       type: 'POST',
-      success: playlist.tracks().remove(track),
+      // success: playlist.fetch,
       trigger: true
     };
+
+    _.extend(options, opts);
 
     return this.sync.call(this, null, this, options)
   }

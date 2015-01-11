@@ -1,7 +1,7 @@
 Soundclone.Views.PlaylistsIndex = Backbone.View.extend({
 
   initialize: function () {
-    this.listenTo(this.collection, "add remove change reset", this.render);
+    this.listenTo(this.collection, "add remove change reset sync", this.render);
   },
 
   template: JST['playlists/index'],

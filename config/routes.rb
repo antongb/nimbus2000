@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :users do
       resources :playlists, only: :index
     end
-    resources :tracks
+    resources :tracks do
+      member do
+        post 'like'
+      end
+    end
     resources :playlists, except: :index
     resources :playlists do
       member do

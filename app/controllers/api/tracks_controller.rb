@@ -5,7 +5,7 @@ class Api::TracksController < BackboneController
   end
 
   def show
-    @track = Track.includes(:uploader).find(params[:id])
+    @track = Track.includes(:uploader, :likes).find(params[:id])
     render :show
   end
 
@@ -37,6 +37,16 @@ class Api::TracksController < BackboneController
     @track = current_user.tracks.find(params[:id])
     @track.destroy
     render :index
+  end
+
+  def like
+    @track = Track.find(params[:id])
+    if current_user.likes?(@track.id)
+      current_user.liked_tracks.delete(@track)
+    else
+      current_user.liked_tracks << @track
+    end
+    render :show
   end
 
   private

@@ -1,6 +1,6 @@
 json.username @user.username
 
-json.playlists @user.playlists, :id, :title
+json.playlists @playlists, :id, :title, :description
 
 # json.array!(@user.playlists) do |playlist|
 #   json.id playlist.id

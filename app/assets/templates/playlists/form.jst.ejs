@@ -1,0 +1,19 @@
+<% if (track){ %>
+<input type="hidden" name="track" value="<%= track %>">
+<% } %>
+<label>
+  <strong>Title: </strong>
+  <input type="text" name="playlist[title]" value="<%= playlist.escape('title') %>">
+</label>
+
+<label>
+  <strong>Description (1000 chars max): </strong>
+  <textarea name="playlist[description]"><%= playlist.escape('description') %></textarea>
+</label>
+
+<label>
+  Private?
+  <input type="checkbox" name="playlist[private]" value="true">
+</label>
+
+<button><%= playlist.isNew() ? "Create": "Update" %></button>

@@ -7,6 +7,11 @@ Soundclone.Models.User = Backbone.Model.extend({
       this.tracks().set(response.tracks);
       delete response.tracks;
     }
+
+    if (response.playlists) {
+      this.playlists().set(response.playlists);
+      delete response.playlists;
+    }
     return response;
   },
 
@@ -15,5 +20,12 @@ Soundclone.Models.User = Backbone.Model.extend({
       this._tracks = new Soundclone.Collections.Tracks();
     }
     return this._tracks;
+  },
+
+  playlists: function () {
+    if (!this._playlists) {
+      this._playlists = new Soundclone.Collections.Playlists({userId: this.id});
+    }
+    return this._playlists;
   }
 });

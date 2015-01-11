@@ -2,14 +2,18 @@ Rails.application.routes.draw do
   root 'tracks#index'
 
   namespace :api, defaults: {format: :json} do
+
     resources :users do
       resources :playlists, only: :index
     end
+
     resources :tracks do
+      resources :comments, only: [:new, :create, :index]
       member do
         post 'like'
       end
     end
+
     resources :playlists, except: :index
     resources :playlists do
       member do
@@ -17,6 +21,9 @@ Rails.application.routes.draw do
         post 'remove_track/:track_id' => 'playlists#remove_track'
       end
     end
+
+    resources :comments, only: [:edit, :update, :destroy]
+
   end
 
   get 'backbone', to: 'backbone#index'

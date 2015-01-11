@@ -1,0 +1,13 @@
+<strong><%= comment.escape('username') %> on <%= comment.escape('post_time') %>
+  <%= comment.get('parent_username') ? "in reply to " + comment.escape('parent_username') : "" %>:
+</strong>
+
+<p><%= comment.escape('body') %></p>
+<button class="comment-reply">Reply</button>
+<% if (comment.get('user_id') === currentUser.id){ %>
+  <button class="comment-edit">Edit</button>
+  <button class="comment-delete">Delete</button>
+<% }; %>
+<div class="reply-form">
+  
+</div>

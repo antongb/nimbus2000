@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :likes, foreign_key: :liker_id
   has_many :liked_tracks, through: :likes, source: :track
 
+  has_many :comments
+
   after_initialize :ensure_session_token
 
   def password=(password)

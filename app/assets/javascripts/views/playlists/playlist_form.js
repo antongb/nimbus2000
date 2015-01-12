@@ -19,8 +19,9 @@ Soundclone.Views.PlaylistForm = Backbone.View.extend({
     var that = this;
 
     this.model.save(attrs, {
-      success: function () {
-        Backbone.history.navigate("playlists/" + that.model.id, {trigger: true})
+      success: function (model, data) {
+        debugger
+        Backbone.history.navigate("playlists/" + model.id, {trigger: true})
       }
     })
   }

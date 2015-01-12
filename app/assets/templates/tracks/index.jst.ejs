@@ -2,7 +2,7 @@
 <ul>
   <% tracks.each(function(track) { %>
     <li>
-      <a href="#/tracks/<%= track.id %>"><%= track.escape('title') %></a>
+      <strong><a href="#/tracks/<%= track.id %>"><%= track.escape('title') %></a></strong>
        Uploaded by
       <strong><a href="#/users/<%= track.escape('uploader_id') %>"><%= track.escape('uploader_name') %></a></strong>
     </li>

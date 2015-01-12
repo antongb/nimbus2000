@@ -1,0 +1,10 @@
+<h3><%= track.escape('title') %> - Uploaded by <%= track.escape('uploader_name') %></h3>
+
+<img src="<%= track.escape('cover_thumb') %>" alt="<%= track.escape('title') %>" />
+
+<audio src="<%= track.escape('audio') %>" preload="auto" controls>
+  <p>Your browser does not support the audio element.</p>
+</audio>
+
+
+<br>

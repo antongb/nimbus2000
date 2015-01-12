@@ -17,7 +17,121 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 
+html, body, header, footer, section, article, div,
+strong, a, img, p, h1, h2, h3, time, ul, li, small,
+form, label, input, textarea, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
 
-/*body {
+body {
   font-family: Open Sans, sans-serif;
-}*/
+}
+
+ul {
+  list-style: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+input[type="text"],
+button,
+textarea {
+  -webkit-appearance: none;
+}
+
+.group:after {
+  clear: both;
+  display: block;
+  content: ""
+}
+
+header {
+  background: #D96198;
+  color: #fff;
+}
+
+header li {
+  display: block;
+  float: left;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #fff;
+  background: #C53A79;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+header a, header button {
+  color: #fff;
+  display: block;
+  margin: 0;
+  background: transparent;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+}
+
+nav {
+  margin: auto;
+  width: 95%;
+  /*border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;*/
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#app {
+  margin: auto;
+  width: 90%;
+}
+
+#content {
+  float: left;
+  width: 800px;
+  background: #eee;
+  padding: 10px 20px;
+}
+
+#queue {
+  float: right;
+  width: 200px;
+  display: none;
+  background: red;
+}
+
+textarea {
+  height: 100px;
+  width: 400px;
+}
+
+input[type="text"], textarea {
+  border: 1px solid #333;
+  padding: 5px 10px;
+  background: white;
+}

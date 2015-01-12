@@ -1,5 +1,9 @@
 <h2><%= playlist.escape('title') %></h2>
 
+<p>
+  <%= playlist.escape('description') %>
+</p>
+
 <% playlist.tracks().each(function(track){ %>
   <a href="#/tracks/<%= track.id %>"><%= track.escape('title') %></a>
   <% if (currentUser.id === playlist.get('owner_id')) { %>

@@ -4,10 +4,6 @@
   <%= playlist.escape('description') %>
 </p>
 
-<% playlist.tracks().each(function(track){ %>
-  <a href="#/tracks/<%= track.id %>"><%= track.escape('title') %></a>
-  <% if (currentUser.id === playlist.get('owner_id')) { %>
-    <button data-id="<%= track.id %>">Remove</button>
-  <% } %>
-  <br>
-<% }); %>
+<section class="playlist-tracks">
+
+</section>

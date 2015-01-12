@@ -15,8 +15,8 @@
   <br>
 
   <label>
-    <strong>Cover Art URL (optional):</strong>
-    <input type="text" name="track[cover_art_url]" value="<%= track.escape('cover_art_url') %>">
+    <strong>Cover Art(optional):</strong>
+    <input type="file" name="track[cover]" accept="image/*">
   </label>
   <br>
   <button id="form-submit"><%= track.isNew() ? "Upload!" : "Update!" %></button>

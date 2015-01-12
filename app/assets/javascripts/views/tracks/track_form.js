@@ -1,6 +1,7 @@
 Soundclone.Views.TrackForm = Backbone.View.extend({
   events: {
     // "click #form-submit": "submit" TODO AJAXify this form
+    "click #form-submit": "uploading"
   },
 
   tagName: 'form',
@@ -30,5 +31,9 @@ Soundclone.Views.TrackForm = Backbone.View.extend({
       patch: true
     })
 
+  },
+
+  uploading: function (event) {
+    this.$el.append("<p>Uploading...</p>")
   }
 })

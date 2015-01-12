@@ -5,6 +5,9 @@
     name: "<%= current_user.username %>",
     playlists: new Soundclone.Collections.Playlists({userId: <%= current_user.id %>})
   }
+
+  authToken = "<%= form_authenticity_token %>";
+
   console.log(currentUser.playlists)
 </script>
 

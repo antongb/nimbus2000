@@ -12,7 +12,7 @@ class Api::TracksController < BackboneController
   def create
     @track = current_user.tracks.new(track_params)
     if @track.save
-      render :show
+      redirect_to "/backbone\#/tracks/#{@track.id}"
     else
       flash.now[:errors] = @track.errors.full_messages
       render :new
@@ -52,7 +52,7 @@ class Api::TracksController < BackboneController
   private
 
   def track_params
-    params.require(:track).permit([:title, :cover_art_url])
+    params.require(:track).permit([:title, :cover_art_url, :audio])
   end
 
 end

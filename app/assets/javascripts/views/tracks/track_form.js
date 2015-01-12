@@ -1,9 +1,15 @@
 Soundclone.Views.TrackForm = Backbone.View.extend({
   events: {
-    "click #form-submit": "submit"
+    // "click #form-submit": "submit" TODO AJAXify this form
   },
 
   tagName: 'form',
+
+  attributes: {
+    'enctype': "multipart/form-data",
+    'action': '/api/tracks/',
+    'method': 'POST'
+  },
 
   template: JST['tracks/form'],
 

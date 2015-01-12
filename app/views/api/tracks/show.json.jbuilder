@@ -1,5 +1,7 @@
 json.extract! @track, :id, :title, :uploader_id, :cover_art_url
 
+json.audio @track.audio.url
+
 json.num_likes @track.likes.count
 
 json.curr_user_likes current_user.likes?(@track)

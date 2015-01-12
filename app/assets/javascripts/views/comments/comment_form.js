@@ -5,7 +5,8 @@ Soundclone.Views.CommentForm = Backbone.View.extend({
   },
 
   events: {
-    "click button": "submit"
+    "click button.submit": "submit",
+    "click button.cancel": "cancel"
   },
 
   template: JST['comments/form'],
@@ -29,8 +30,13 @@ Soundclone.Views.CommentForm = Backbone.View.extend({
       success: function (model, response) {
         model.set(response);
         that.collection.add(model, {trigger: true});
-        that.trigger("submit");
+        that.trigger("clear");
       }
     });
+  },
+
+  cancel: function () {
+    event.preventDefault();
+    this.trigger("clear")
   }
 });

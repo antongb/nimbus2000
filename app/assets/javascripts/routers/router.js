@@ -16,6 +16,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     'tracks/new': 'newTrack',
     'tracks/:id': 'showTrack',
     'tracks/:id/edit': 'editTrack',
+    'playlists/new/:trackId': 'newPlaylist',
     'playlists/new': 'newPlaylist',
     'playlists/:id': 'showPlaylist'
   },
@@ -68,9 +69,9 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  newPlaylist: function () {
+  newPlaylist: function (trackId) {
     var playlist = new Soundclone.Models.Playlist();
-    var view = new Soundclone.Views.PlaylistForm({model: playlist});
+    var view = new Soundclone.Views.PlaylistForm({model: playlist, trackId: trackId});
     this._swapView(view);
   },
 

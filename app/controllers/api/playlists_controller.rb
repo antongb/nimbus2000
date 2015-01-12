@@ -3,11 +3,11 @@ class Api::PlaylistsController < BackboneController
 
   def index
     @user = User.includes(:playlists).find(params[:user_id])
-    if current_user.id == params[:user_id]
-      @playlists = @user.playlists
-    else
-      @playlists = @user.playlists.where(private: false)
-    end
+    # if current_user.id == params[:user_id]
+    #   @playlists = @user.playlists
+    # else
+    @playlists = @user.visible_playlists(current_user)
+    # end
   end
 
   def new

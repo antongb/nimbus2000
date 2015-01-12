@@ -5,6 +5,7 @@
     name: "<%= current_user.username %>",
     playlists: new Soundclone.Collections.Playlists({userId: <%= current_user.id %>})
   }
+  console.log(currentUser.playlists)
 </script>
 
 <h1><a href="/backbone">BeatSoup</a></h1>

@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     self.likes.where(track_id: track_id).exists?
   end
 
-  def visible_playlists
+  def visible_playlists(current_user)
     self.playlists.where("private = false OR owner_id = ?", current_user.id)
   end
 

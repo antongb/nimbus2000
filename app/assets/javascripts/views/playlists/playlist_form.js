@@ -1,5 +1,9 @@
 Soundclone.Views.PlaylistForm = Backbone.View.extend({
 
+  initialize: function (options) {
+    this.trackId = options.trackId
+  },
+
   tagName: 'form',
 
   events: {
@@ -18,9 +22,12 @@ Soundclone.Views.PlaylistForm = Backbone.View.extend({
     var attrs = this.$el.serializeJSON();
     var that = this;
 
+    if (this.trackId) {
+      attrs.track = this.trackId;
+    }
+
     this.model.save(attrs, {
       success: function (model, data) {
-        debugger
         Backbone.history.navigate("playlists/" + model.id, {trigger: true})
       }
     })

@@ -20,7 +20,7 @@ Soundclone.Views.CommentsRoot = Backbone.CompositeView.extend({
     this.commentForm && this.removeSubview("#comment-form", this.commentForm);
     var newComment = new Soundclone.Models.Comment({trackId: this.collection.trackId});
     this.commentForm = new Soundclone.Views.CommentForm({model: newComment, collection: this.collection});
-    this.listenTo(this.commentForm, "submit", this.renderForm);
+    this.listenTo(this.commentForm, "clear", this.renderForm);
     this.addSubview("#comment-form", this.commentForm);
   }
 });

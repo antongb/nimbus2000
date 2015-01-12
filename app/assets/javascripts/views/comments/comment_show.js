@@ -36,10 +36,11 @@ Soundclone.Views.CommentShow = Backbone.CompositeView.extend({
       model: newComment,
       collection: this.collection
     });
-    this.listenTo(subView, "submit", function () {
+    this.listenTo(subView, "clear", function () {
       view.removeSubview(".reply-form", subView);
     });
     this.addSubview(".reply-form", subView);
+    subView.$(".body").focus();
   },
 
   editComment: function (event) {
@@ -47,13 +48,12 @@ Soundclone.Views.CommentShow = Backbone.CompositeView.extend({
     this.$el.empty();
     var editView = new Soundclone.Views.CommentForm({
       model: this.model,
-      collection: this.collection,
+      collection: this.collection
     });
-
-    this.listenTo(editView, "submit", function () {
+    this.listenTo(editView, "clear", function () {
       editView.remove();
     });
-
     this.$el.html(editView.render().$el);
+    editView.$(".body").focus();
   }
 });

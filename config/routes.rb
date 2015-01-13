@@ -5,13 +5,12 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :playlists, only: :index
+      resource :follow, only: [:create, :destroy]
     end
 
     resources :tracks do
       resources :comments, only: [:new, :create, :index]
-      member do
-        post 'like'
-      end
+      resource :like, only: [:create, :destroy]
     end
 
     resources :playlists, except: :index
@@ -25,6 +24,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:edit, :update, :destroy]
 
   end
+
+  get 'mp3test', to: 'backbone#test'
 
   get 'backbone', to: 'backbone#index'
 

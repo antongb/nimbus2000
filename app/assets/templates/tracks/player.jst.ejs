@@ -1,8 +1,12 @@
-<h3><%= track.escape('title') %> - Uploaded by <%= track.escape('uploader_name') %></h3>
+<h4><%= track.escape('title') %></h4>
 
-<img src="<%= track.escape('cover_thumb') %>" alt="<%= track.escape('title') %>" />
+<h4>Uploaded by <%= track.escape('uploader_name') %></h4>
 
-<audio src="<%= track.escape('audio') %>" preload="auto" controls>
+<% if (track.get('cover_thumb')){ %>
+  <img src="<%= track.escape('cover_thumb') %>" alt="<%= track.escape('title') %>" />
+<% } %>
+
+<audio src="<%= track.escape('audio') %>" preload="none" controls>
   <p>Your browser does not support the audio element.</p>
 </audio>
 

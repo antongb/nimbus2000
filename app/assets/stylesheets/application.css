@@ -18,7 +18,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 
 html, body, header, footer, section, article, div,
-strong, a, img, p, h1, h2, h3, time, ul, li, small,
+strong, a, img, p, h1, h2, h3, h4, time, ul, li, small,
 form, label, input, textarea, button {
   margin: 0;
   padding: 0;
@@ -37,11 +37,21 @@ body {
   font-family: Open Sans, sans-serif;
 }
 
+a {
+  color: #C53A79;
+  font-weight: bold;
+}
+
 ul {
   list-style: none;
 }
 
 strong {
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -86,12 +96,45 @@ header a, header button {
   text-decoration: none;
 }
 
+#follow-view {
+  float: right;
+}
+
+.username {
+  display: block;
+  font-size: 48px;
+  margin: 0px;
+  float: left;
+}
+
+.sign-in-header {
+  margin: auto;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  display: block;
+  padding: 5px 0;
+}
+
+.header li:not(.logo) {
+  margin-top: 5px;
+}
+
 .header-left {
   float: left;
 }
 
 .header-right {
   float: right;
+}
+
+button.sign-out {
+  font-size: 16px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 nav {
@@ -103,6 +146,10 @@ nav {
 
 h2 {
   font-size: 24px;
+  font-weight: bold;
+}
+
+h4 {
   font-weight: bold;
 }
 

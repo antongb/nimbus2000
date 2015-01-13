@@ -3,7 +3,7 @@ class Api::UsersController < BackboneController
   end
 
   def show
-    @user = User.includes(:tracks, :playlists).find(params[:id])
+    @user = User.includes(:tracks, :playlists, :followers).find(params[:id])
     render :show
   end
 

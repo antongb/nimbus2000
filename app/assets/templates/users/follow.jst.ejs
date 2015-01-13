@@ -1,0 +1,12 @@
+<button>
+  <%= user.get('you_follow') ? "Unfollow" : "Follow" %>
+</button>
+<br>
+
+<div>
+  <%= user.escape('num_followers') %> Followers
+</div>
+
+<div>
+  <%= user.escape('num_followees') %> Following
+</div>

@@ -13,13 +13,13 @@
 
 <header>
   <nav class="group">
-      <ul class="header-left group">
-        <li><a href="/backbone">BeatSoup</a></li>
+      <ul class="header header-left group">
+        <li class="logo"><a href="/backbone">BeatSoup</a></li>
         <li><a href="#">Favorites</a></li>
         <li><a href="#">Explore</a></li>
       </ul>
 
-      <ul class="header-right group">
+      <ul class="header header-right group">
         <li><a href="#tracks/new">Upload track</a></li>
         <li><a href="#playlists/new">Create playlist</a></li>
         <li><a href="#/users/<%= current_user.id %>"><%= current_user.username %></a></li>
@@ -27,7 +27,7 @@
           <form id="log-out" action="/session" method="post">
             <%= auth_token_input %>
             <%= method_input(:delete) %>
-            <button>Log Out</button>
+            <button class="sign-out">Sign Out</button>
           </form>
         </li>
       </ul>

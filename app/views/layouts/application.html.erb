@@ -8,8 +8,18 @@
 </head>
 <body>
 
+<% unless signed_in? %>
+  <header>
+    <nav class="group sign-in-header">
+
+      <h1>BeatSoup</h1>
+
+    </nav>
+  </header>
+<% end %>
+
 <% unless request.fullpath.match("backbone") %>
-  <h1><a href="/">BeatSoup</a></h1>
+
   <% if flash[:errors] %>
     <%= flash[:errors].join("<br>").html_safe %>
     <br><br>

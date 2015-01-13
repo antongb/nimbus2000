@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
     self.playlists.where("private = false OR owner_id = ?", current_user.id)
   end
 
+  def follows?(user)
+    self.followees.include?(user)
+  end
+
   private
 
   def ensure_session_token

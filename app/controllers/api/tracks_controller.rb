@@ -46,7 +46,6 @@ class Api::TracksController < BackboneController
     else
       current_user.liked_tracks << @track
     end
-    render :show
   end
 
   private

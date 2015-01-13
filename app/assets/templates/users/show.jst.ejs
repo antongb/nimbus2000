@@ -1,13 +1,18 @@
-<h2><%= user.escape('username') %></h2>
+<div class="group">
+  <h2 class="username"><%= user.escape('username') %></h2>
+
+  <div id="follow-view">
+
+  </div>
+</div>
 
 <% if (user.get('avatar_url')){ %>
 <img src="<%= user.get('avatar_url') %>" alt="<%= user.escape('username') %>" /><br>
 <% } %>
 <h3><%= user.escape('username') %>'s Tracks</h3>
-<% user.tracks().each(function(track) { %>
-<a href="#/tracks/<%= track.id %>"><%= track.escape("title") %></a><br>
-<% }); %>
-<br>
+<div id="user-tracks">
+
+</div>
 
 <h3><a href="#/users/<%= user.id %>"><%= user.escape('username') %>'s Playlists</a></h3>
 <% user.playlists().each(function(playlist){ %>

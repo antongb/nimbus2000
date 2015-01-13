@@ -1,17 +1,9 @@
 Soundclone.Models.Track = Backbone.Model.extend({
   urlRoot: '/api/tracks',
 
-  like: function (opts) {
-    var url = this.urlRoot + '/' + this.id + '/like';
-    var track = this;
-    var options = {
-      url: url,
-      type: 'POST',
-      trigger: true
-    };
-
+  like: function (options) {
+    var opts = this.get('curr_user_likes') ? {type: 'DELETE'} : {}
     _.extend(options, opts);
-
-    this.sync(null, this, options);
+    return this.customAction('like', options);
   }
 });

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'tracks#index'
+  root 'backbone#index'
 
   namespace :api, defaults: {format: :json} do
 

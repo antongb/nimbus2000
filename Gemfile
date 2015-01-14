@@ -31,7 +31,7 @@ gem 'backbone-on-rails'
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
-gem 'taglib-ruby'
+# gem 'taglib-ruby'
 
 group :development do
   gem 'better_errors'

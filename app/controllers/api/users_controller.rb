@@ -1,4 +1,8 @@
 class Api::UsersController < BackboneController
+  def index
+    @users = User.all
+  end
+
   def new
   end
 

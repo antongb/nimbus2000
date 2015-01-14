@@ -8,6 +8,10 @@ Uploaded by <strong><a href="#/users/<%= track.get('uploader_id') %>"><%= track.
 </audio><br>
 <% } %>
 
+<div id="track-tags">
+
+</div>
+
 <% if (track.get('cover')) { %>
   <img src="<%= track.escape('cover') %>" alt="<%= track.escape('title') %>" /><br>
 <% } %>

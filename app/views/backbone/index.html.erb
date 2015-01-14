@@ -6,16 +6,21 @@
     playlists: new Soundclone.Collections.Playlists({userId: <%= current_user.id %>})
   }
 
+  window.tags = <%= Tag.all.as_json(only: [:id, :name]).to_json.html_safe %>
+
   authToken = "<%= form_authenticity_token %>";
 
   console.log(currentUser.playlists)
 </script>
 
+
+
+
 <header>
   <nav class="group">
       <ul class="header header-left group">
-        <li class="logo"><a href="/backbone">BeatSoup</a></li>
-        <li><a href="#">Favorites</a></li>
+        <li class="logo"><a href="#">BeatSoup</a></li>
+        <li><a href="#/favorites">Favorites</a></li>
         <li><a href="#/users">Explore</a></li>
       </ul>
 

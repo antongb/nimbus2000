@@ -19,4 +19,10 @@
     <input type="file" name="track[cover]" accept="image/*">
   </label>
   <br>
+
+  <label>
+    Or enter a URL:
+    <input type="text" name="track[cover_url]">
+  </label>
+  <br>
   <button id="form-submit"><%= track.isNew() ? "Upload!" : "Update!" %></button>

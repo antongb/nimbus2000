@@ -51,7 +51,7 @@ class Api::TracksController < BackboneController
   private
 
   def track_params
-    params.require(:track).permit([:title, :cover, :audio])
+    params.require(:track).permit([:title, :cover, :audio, :cover_url])
   end
 
 end

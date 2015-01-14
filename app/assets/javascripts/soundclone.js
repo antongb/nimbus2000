@@ -5,6 +5,7 @@ window.Soundclone = {
   Routers: {},
   initialize: function() {
     this.router = new Soundclone.Routers.Router({$mainEl: $("#content"), $navEl: $("nav")});
+    // Soundclone.getTags();
     Backbone.history.start();
   }
 };

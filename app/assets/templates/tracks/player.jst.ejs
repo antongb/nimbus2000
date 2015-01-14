@@ -1,6 +1,6 @@
-<h4><%= track.escape('title') %></h4>
+<a href="#/tracks/<%= track.id %>"><h4><%= track.escape('title') %></h4></a>
 
-<h4>Uploaded by <%= track.escape('uploader_name') %></h4>
+<h4>Uploaded by <a href="#/users/<%= track.escape('uploader_id') %>"><%= track.escape('uploader_name') %></a></h4>
 
 <% if (track.get('cover_thumb')){ %>
   <img src="<%= track.escape('cover_thumb') %>" alt="<%= track.escape('title') %>" />

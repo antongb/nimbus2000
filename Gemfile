@@ -31,6 +31,7 @@ gem 'backbone-on-rails'
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'jquery-ui-rails'
 # gem 'taglib-ruby'
 
 group :development do

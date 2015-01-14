@@ -18,7 +18,9 @@
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models
+//= require ./collections/tracks
 //= require_tree ./collections
+//= require ./views/tracks/tracks_list
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .

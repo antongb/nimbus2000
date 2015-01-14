@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :followee_follows, class_name: "Follow", foreign_key: :follower_id
   has_many :followees, through: :followee_follows, source: :followee
 
+  has_many :stream_tracks, through: :followees, source: :tracks
+
   after_initialize :ensure_session_token
 
   def password=(password)

@@ -1,21 +1,12 @@
-Soundclone.Views.TracksList = Backbone.CompositeView.extend({
+Soundclone.Views.TracksListView = Backbone.CompositeView.extend({
 
-  initialize: function () {
-    this.listenTo(this.collection, "sync", this.render)
-    var that = this;
-    this.collection.each(function (track) {
-      var trackView = new Soundclone.Views.TrackPlayer({model: track});
-
-      that.addSubview(".tracks", trackView)
-    });
+  renderTrack: function (track) {
+    var trackView = new Soundclone.Views.TrackPlayer({model: track});
+    debugger;
+    this.addSubview(this.selector, trackView);
   },
 
-  template: JST['tracks/list'],
-
-  render: function () {
-    debugger
-    this.$el.html(this.template());
-    this.attachSubviews();
-    return this;
+  renderTracks: function () {
+    this.collection.each(this.renderTrack.bind(this));
   }
 })

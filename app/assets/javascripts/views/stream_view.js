@@ -11,7 +11,6 @@ Soundclone.Views.StreamView = Soundclone.Views.TracksListView.extend({
   render: function () {
     this.$el.html(this.template());
     this.renderTracks();
-    debugger
     return this;
   },
 

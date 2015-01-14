@@ -7,7 +7,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'tracksIndex',
+    '': 'stream',
     'users/new': 'newUser',
     'users/:id/playlists': 'playlistsIndex',
     'users/:id': 'showUser',
@@ -19,6 +19,13 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     'playlists/new/:trackId': 'newPlaylist',
     'playlists/new': 'newPlaylist',
     'playlists/:id': 'showPlaylist'
+  },
+
+  stream: function () {
+    var stream = new Soundclone.Collections.Stream();
+    var view = new Soundclone.Views.StreamView({collection: stream})
+    stream.fetch();
+    this._swapView(view);
   },
 
   tracksIndex: function () {

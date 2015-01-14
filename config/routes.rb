@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
 
+    get 'stream', to: 'streams#index'
+
     resources :users do
       resources :playlists, only: :index
       resource :follow, only: [:create, :destroy]

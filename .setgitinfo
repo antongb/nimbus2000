@@ -1,2 +1,4 @@
 git config --local user.name "Jeffrey Barszcz"
 git config --local user.email "jfbarszcz@gmail.com"
+git config --get user.name
+git config --get user.email

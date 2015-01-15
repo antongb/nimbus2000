@@ -1,9 +1,0 @@
-<h2>Reply to Comment</h2>
-
-<form action="<%= track_comments_url(@track_id) %>" method="post">
-  <%= auth_token_input %>
-  <input type="hidden" name="comment[parent_id]" value="<%= @comment.parent_id %>">
-  <input type="hidden" name="comment[track_id]" value="<%= @track_id %>">
-  <textarea name="comment[body]"></textarea>
-  <input type="submit" value="Post">
-</form>

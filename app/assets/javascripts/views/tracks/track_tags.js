@@ -14,23 +14,14 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
   },
 
   autocomplete: function () {
-    var tagNames = _.map(window.tags, function (tag) {
-      return tag.name;
-    })
+    var tagNames = _.pluck(window.tags, 'name');
 
     this.$("#tag-input").autocomplete({
       source: tagNames,
       delay: 0
     });
 
-    var view = this;
-
-    this.$("#tag-input").keypress(function (event) {
-      if (event.which == 13) {
-        event.preventDefault();
-        view.submit();
-      }
-    })
+    this.$("#tag-form").on("submit", this.submit.bind(this));
 
   },
 
@@ -39,6 +30,7 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
     var that = this;
     var name = $(event.currentTarget).data("name");
     var $li =$(event.currentTarget).parent();
+
     this.model.addRemoveTag({
       data: {name: name},
       type: 'DELETE',
@@ -54,6 +46,8 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
   },
 
   submit: function (event) {
+    console.log("submit");
+    event.preventDefault();
     var tag = this.$("#tag-form").serializeJSON();
     console.log(tag)
     var view = this;
@@ -65,6 +59,7 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
         view.model.get('tags').push(response)
         window.tags.push(response)
         view.render();
+        $("#tag-input").focus();
       }
     })
   }

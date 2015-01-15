@@ -2,7 +2,7 @@
 <ul class="tag-list group">
 <% _.each(tags, function(tag) { %>
   <li class="tag group">
-    <a href="#/tags/<%= tag.name %>"><%= tag.name %></a>
+    <a href="#/explore/<%= tag.name %>"><%= tag.name %></a>
     <a href="javascript:void(0);" class="delete-tag" data-name="<%= tag.name %>">x</a>
 </li>
 

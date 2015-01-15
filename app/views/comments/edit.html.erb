@@ -1,9 +1,0 @@
-<h2>Edit Comment</h2>
-
-<form action="<%= comment_url(@comment) %>" method="post">
-  <%= auth_token_input %>
-  <%= method_input(:patch) %>
-  <textarea name="comment[body]"><%= @comment.body %></textarea>
-  <input type="submit" value="Update">
-
-</form>

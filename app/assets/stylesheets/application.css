@@ -238,3 +238,11 @@ input[type="text"],[type="password"], textarea {
 .ui-menu-item {
   font-size: 12px;
 }
+
+#tag-search-input {
+  color: #999
+}
+
+#tag-search-input:focus {
+  color: black
+}

@@ -116,6 +116,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   },
 
   explore: function (name) {
+    console.log("explore");
     var options = name ? {name: name} : {}
     var view = new Soundclone.Views.ExploreView(options);
     this._swapView(view);

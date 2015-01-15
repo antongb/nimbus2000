@@ -6,7 +6,7 @@
     playlists: new Soundclone.Collections.Playlists({userId: <%= current_user.id %>})
   }
 
-  window.tags = <%= Tag.all.as_json(only: [:id, :name]).to_json.html_safe %>
+  window.tags = <%= Tag.all.pluck(:name).to_json.html_safe %>
 
   authToken = "<%= form_authenticity_token %>";
 

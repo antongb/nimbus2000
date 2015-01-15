@@ -12,8 +12,8 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
       $(this).select();
     });
 
-    if (this.tagName) {
-    this.$("#tag-search-input").val(this.tagName.replace(/\-/g, " "));
+    if (this.tagName && _.contains(window.tags, this.tagName)) {
+    this.$("#tag-search-input").val(decodeURIComponent(this.tagName));
     this.submit();
   } else {
     this.trending();
@@ -23,7 +23,7 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
   },
 
   autocomplete: function () {
-    var tagNames = _.pluck(window.tags, 'name');
+    var tagNames = window.tags;
     tagNames.push("Trending");
 
     this.$("#tag-search-input").autocomplete({
@@ -39,13 +39,16 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
   submit: function (event) {
     event && event.preventDefault();
     var tag = this.$("#tag-search-input").val();
-    if (/trending/i.test(tag)) return this.trending();
+
+    var tagExists = console.log(_.contains(window.tags, tag))
+
+    if (/trending/i.test(tag) || !tagExists) return this.trending();
 
     var tracks = new Soundclone.Collections.TagTracks({name: tag});
     tracks.fetch();
     var subview = new Soundclone.Views.TagShow({collection: tracks});
     this._swapSubview(subview);
-    Backbone.history.navigate('/explore/' + tracks.name.replace(/ /g, "-"));
+    Backbone.history.navigate('/explore/' + encodeURIComponent(tracks.name));
   },
 
   trending: function () {

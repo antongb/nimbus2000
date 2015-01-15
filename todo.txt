@@ -1,0 +1,16 @@
+TODO
+
+Explore page DONE
+Clean up routes, old controllers/views ROUTES DONE
+Change page title DONE
+Validate presence of track audio DONE?
+AJAXify track upload form
+User profile stuff
+Refactor BB Track model to remove tag ids
+
+
+Reposts!
+Errors!
+Redo Player!
+
+Jquery UJS stuff?

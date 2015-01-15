@@ -14,10 +14,9 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
   },
 
   autocomplete: function () {
-    var tagNames = _.pluck(window.tags, 'name');
 
     this.$("#tag-input").autocomplete({
-      source: tagNames,
+      source: window.tags,
       delay: 0
     });
 
@@ -46,18 +45,16 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
   },
 
   submit: function (event) {
-    console.log("submit");
     event.preventDefault();
     var tag = this.$("#tag-form").serializeJSON();
-    console.log(tag)
     var view = this;
 
     this.model.addRemoveTag({
       data: tag,
       success: function (response) {
-        console.log(response)
-        view.model.get('tags').push(response)
-        window.tags.push(response)
+        debugger;
+        view.model.get('tags').push(response); // TODO remove tag ID from track model
+        window.tags.push(response.name);
         view.render();
         $("#tag-input").focus();
       }

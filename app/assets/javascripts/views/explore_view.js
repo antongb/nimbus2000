@@ -8,10 +8,16 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template());
+    this.$("#tag-search-input").focus(function () {
+      $(this).select();
+    });
+
     if (this.tagName) {
-    this.$("#tag-search-input").val(this.tagName);
+    this.$("#tag-search-input").val(this.tagName.replace(/\-/g, " "));
     this.submit();
-    }
+  } else {
+    this.trending();
+  }
     this.autocomplete();
     return this;
   },
@@ -32,22 +38,29 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
 
   submit: function (event) {
     event && event.preventDefault();
-    console.log("hi")
     var tag = this.$("#tag-search-input").val();
-    // var view = this;
+    if (/trending/i.test(tag)) return this.trending();
+
     var tracks = new Soundclone.Collections.TagTracks({name: tag});
     tracks.fetch();
     var subview = new Soundclone.Views.TagShow({collection: tracks});
     this._swapSubview(subview);
+    Backbone.history.navigate('/explore/' + tracks.name.replace(/ /g, "-"));
   },
 
-
+  trending: function () {
+    var tracks = new Soundclone.Collections.Tracks();
+    tracks.fetch();
+    var subview = new Soundclone.Views.TracksIndex({collection: tracks});
+    this._swapSubview(subview);
+    Backbone.history.navigate('/explore');
+    this.$("#tag-search-input").val('Trending');
+  },
 
   _swapSubview: function (subview) {
     this._currentSubview && this._currentSubview.remove();
     this.currentSubview = subview;
     this.$("#explored-thing").html(subview.render().$el);
-    Backbone.history.navigate('/explore/' + subview.collection.name);
   }
 
 })

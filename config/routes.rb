@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
     get 'stream', to: 'streams#index'
     get 'favorites', to: 'likes#index'
-    get 'tags', to: 'tags#index'
+
+    resources :tags, only: :index
+    get 'tags/:name', to: 'tags#show'
 
     resources :users do
       resources :playlists, only: :index
@@ -15,6 +17,10 @@ Rails.application.routes.draw do
     resources :tracks do
       resources :comments, only: [:new, :create, :index]
       resource :like, only: [:create, :destroy]
+      member do
+        post 'tag' => 'tags#add'
+        delete 'tag' => 'tags#remove'
+      end
     end
 
     resources :playlists, except: :index

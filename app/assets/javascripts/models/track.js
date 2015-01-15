@@ -5,5 +5,9 @@ Soundclone.Models.Track = Backbone.Model.extend({
     var opts = this.get('curr_user_likes') ? {type: 'DELETE'} : {}
     _.extend(options, opts);
     return this.customAction('like', options);
+  },
+
+  addRemoveTag: function (options) {
+    return this.customAction('tag', options);
   }
 });

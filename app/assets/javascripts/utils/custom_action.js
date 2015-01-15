@@ -8,5 +8,5 @@ Backbone.Model.prototype.customAction = function (name, opts) {
 
   _.extend(options, opts);
 
-  return this.sync.call(this, null, this, options);
+  return $.ajax(options);
 }

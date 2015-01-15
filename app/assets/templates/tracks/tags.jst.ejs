@@ -1,7 +1,15 @@
 <strong>Tags: </strong>
+<ul class="tag-list group">
 <% _.each(tags, function(tag) { %>
-  <%= tag.name %>
+  <li class="tag group">
+    <a href="#/tags/<%= tag.name %>"><%= tag.name %></a>
+    <a href="javascript:void(0);" class="delete-tag" data-name="<%= tag.name %>">x</a>
+</li>
 
-<% }) %><br>
-<strong>Add tag:</strong>
-<input type="text" class="tag-input" name="some_name" value="">
+<% }) %>
+</ul>
+<form id="tag-form" class="group">
+<label><strong>Add tag:</strong>
+<input type="text" id="tag-input" name="tag[name]">
+</label>
+</form>

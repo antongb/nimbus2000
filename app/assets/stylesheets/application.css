@@ -183,3 +183,58 @@ input[type="text"],[type="password"], textarea {
   padding: 5px 10px;
   background: white;
 }
+
+#track-tags > strong {
+  float: left;
+}
+
+#tag-form {
+  margin-top: 30px;
+  float: left;
+  display: block;
+}
+
+.tag {
+  position: relative;
+  display: block;
+  background: #C53A79;
+  border-radius: 10px;
+  float: left;
+  margin-left: 5px;
+  padding: 2px 7px;
+}
+
+.tag a {
+  color: #fff;
+  float: left;
+  font-weight: normal;
+  display: block;
+  height: 100%;
+  padding-right: 10px;
+}
+
+.tag a.delete-tag {
+  float: right;
+  display: block;
+  padding-right: 0;
+  font-size: 12px;
+  top: 4px;
+  position: absolute;
+  right: 7px;
+}
+
+.tag a.delete-tag:hover {
+  color: #aaa;
+}
+
+.tag-list {
+  margin-top: 10px;
+}
+
+.ui-menu {
+  border-radius: 0;
+}
+
+.ui-menu-item {
+  font-size: 12px;
+}

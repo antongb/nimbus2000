@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Soundclone</title>
+  <title>BeatSoup</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%#= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -25,18 +25,6 @@
     <br><br>
   <% end %>
 
-  <% if signed_in? %>
-    <h2>Hello, <a href="<%= user_url(current_user) %>"><%= current_user.username %>!</a></h2>
-    <a href="/tracks/new">Upload track</a><br>
-    <a href="/playlists/new">Create playlist</a>
-    <form id="log-out" action="/session" method="post">
-      <%= auth_token_input %>
-      <%= method_input(:delete) %>
-      <input type="submit" value="Log Out">
-    </form>
-  <% else %>
-    <a href="/session/new">Sign in</a> or <a href="/users/new">Sign up</a>!
-  <% end %>
 <% end %>
 
 <%= yield %>

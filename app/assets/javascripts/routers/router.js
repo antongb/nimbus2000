@@ -8,6 +8,8 @@ Soundclone.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'stream',
+    'explore': 'explore',
+    'explore/:name': 'explore',
     'favorites': 'favorites',
     'users': 'usersIndex',
     'users/new': 'newUser',
@@ -110,6 +112,12 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     var tracks = new Soundclone.Collections.TagTracks({name: name});
     tracks.fetch();
     var view = new Soundclone.Views.TagShow({collection: tracks});
+    this._swapView(view);
+  },
+
+  explore: function (name) {
+    var options = name ? {name: name} : {}
+    var view = new Soundclone.Views.ExploreView(options);
     this._swapView(view);
   },
 

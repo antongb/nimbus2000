@@ -15,7 +15,7 @@ class Api::TracksController < BackboneController
       redirect_to "/backbone\#/tracks/#{@track.id}"
     else
       flash.now[:errors] = @track.errors.full_messages
-      render :new
+      render json: @track.errors.full_messages
     end
   end
 

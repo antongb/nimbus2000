@@ -1,7 +1,9 @@
 Soundclone.Views.TrackForm = Backbone.View.extend({
   events: {
-    // "click #form-submit": "submit" TODO AJAXify this form
-    "click #form-submit": "uploading"
+    "change .track-audio": "handleFile",
+    "change .track-cover": "handleFile",
+    "click #form-submit": "submit",
+    // "click #form-submit": "uploading"
   },
 
   tagName: 'form',
@@ -19,16 +21,42 @@ Soundclone.Views.TrackForm = Backbone.View.extend({
     return this;
   },
 
+  handleFile: function (event) {
+    var file = event.currentTarget.files[0];
+    var view = this;
+    var reader = new FileReader();
+    this.files = this.files || {}
+    reader.onload = function(e) {
+      view.files[$(event.currentTarget).attr('name')] = this.result;
+    }
+    reader.readAsDataURL(file);
+  },
+
   submit: function (event) {
     event.preventDefault();
+
+    var audio =
+    this.$el.append("<p>Uploading...</p>");
     var attrs = this.$el.serializeJSON();
+
+
     that = this;
 
-    this.model.save(attrs, {
+    _.extend(attrs.track, this.files);
+    console.log(attrs);
+
+    this.model.set(attrs);
+
+
+    console.log(this.model.attributes);
+    this.model.save({}, {
       success: function () {
         Backbone.history.navigate("tracks/" + that.model.id, {trigger: true});
       },
-      patch: true
+      error: function (model, resp) {
+        var respArr = Array.prototype.slice.call(resp.responseText);
+        that.$el.append(resp.responseJSON.join("<br>"));
+      }
     })
 
   },

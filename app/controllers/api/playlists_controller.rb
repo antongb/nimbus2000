@@ -20,13 +20,16 @@ class Api::PlaylistsController < BackboneController
       params[:track] && PlaylistMembership.create(playlist_id: @playlist.id, track_id: params[:track])
       render :show
     else
-      flash.now[:errors] = @playlist.errors.full_messages
+      render_errors(@playlist)
     end
   end
 
   def update
-    @playlist.update(playlist_params)
-    render :show
+    if @playlist.update(playlist_params)
+      render :show
+    else
+      render_errors(@playlist)
+    end
   end
 
   def show

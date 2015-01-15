@@ -19,7 +19,8 @@ class Api::TagsController < BackboneController
   def remove
     @track = Track.includes(:tags).find(params[:id])
     @tag = @track.tags.find_by(name: params[:name])
-    @track.tags.delete(@tag)
+    @track.tags.destroy(@tag)
+    @tag.destroy if @tag.tracks.empty?
     render json: @tag.as_json(only: [:name, :id])
   end
 

@@ -2,8 +2,13 @@ class Api::FollowsController < BackboneController
   before_action :get_user
 
   def create
-    @user.followers << current_user
-    render :show
+    begin
+      @user.followers << current_user
+      render :show
+    rescue ActiveRecord::RecordInvalid
+      render json: "You already follow this user", status: 422
+    end
+
   end
 
   def destroy

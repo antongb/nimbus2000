@@ -12,6 +12,8 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
       $(this).select();
     });
 
+    console.log(this.tagName)
+
     if (this.tagName && _.contains(window.tags, this.tagName)) {
     this.$("#tag-search-input").val(decodeURIComponent(this.tagName));
     this.submit();
@@ -40,7 +42,7 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
     event && event.preventDefault();
     var tag = this.$("#tag-search-input").val();
 
-    var tagExists = console.log(_.contains(window.tags, tag))
+    var tagExists = _.contains(window.tags, tag)
 
     if (/trending/i.test(tag) || !tagExists) return this.trending();
 

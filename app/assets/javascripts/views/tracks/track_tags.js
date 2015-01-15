@@ -52,7 +52,6 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
     this.model.addRemoveTag({
       data: tag,
       success: function (response) {
-        debugger;
         view.model.get('tags').push(response); // TODO remove tag ID from track model
         window.tags.push(response.name);
         view.render();

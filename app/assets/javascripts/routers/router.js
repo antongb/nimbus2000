@@ -8,8 +8,8 @@ Soundclone.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'stream',
-    'explore': 'explore',
     'explore/:name': 'explore',
+    'explore': 'explore',
     'favorites': 'favorites',
     'users': 'usersIndex',
     'users/new': 'newUser',
@@ -126,6 +126,10 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$mainEl.html(view.render().$el);
+  },
+
+  renderErrors: function () {
+
   },
 
   _renderNav: function () {

@@ -8,12 +8,12 @@ class Api::CommentsController < BackboneController
   def create
     @track = Track.includes({comments: [:user, parent_comment: :user]}, :likes).find(params[:track_id])
     @comment = @track.comments.new(comment_params)
-    current_user.comments << @comment
 
     if @comment.save
+      current_user.comments << @comment
       render :show
     else
-      render :index
+      render_errors(@comment)
     end
   end
 
@@ -25,8 +25,11 @@ class Api::CommentsController < BackboneController
 
   def update
     @comment = current_user.comments.find(params[:id])
-    @comment.update(comment_params)
-    render :show
+    if @comment.update(comment_params)
+      render :show
+    else
+      render_errors(@comment)
+    end
   end
 
   private

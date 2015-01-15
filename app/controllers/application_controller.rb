@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :signed_in?, :current_user_owns_track?
 
+  def render_errors(model)
+    render json: model.errors.full_messages, status: 422
+  end
+
   def current_user
     @current_user ||= User.find_by_session_token(session[:session_token])
   end

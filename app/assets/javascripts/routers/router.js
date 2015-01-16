@@ -129,8 +129,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   addToQueue: function (track, options) {
     var trackView = this._queueView.renderTrack(track);
     if (options && options.play) {
-      trackView.$(".player").get(0).play();
-      trackView.$(".player").prop("controls", true);
+      this._queueView.play(trackView);
     }
   },
 

@@ -21,6 +21,7 @@
 //= require_tree ./models
 //= require ./collections/tracks
 //= require_tree ./collections
+//= require ./views/tracks/track_player
 //= require ./views/tracks/tracks_list
 //= require_tree ./views
 //= require_tree ./routers

@@ -6,9 +6,19 @@
   <img src="<%= track.escape('cover_thumb') %>" alt="<%= track.escape('title') %>" />
 <% } %>
 
-<audio src="<%= track.escape('audio') %>" preload="none" controls>
-  <p>Your browser does not support the audio element.</p>
-</audio>
+
+<% if (queue) { %>
+  <audio class="player" src="<%= track.escape('audio') %>" preload="none">
+    <p>Your browser does not support the audio element.</p>
+  </audio>
+<% } %>
+
+
+<div class="group">
+<button class="play-button">▸</button>
+<button class="add-button">+</button>
+</div>
+
 
 
 <br>

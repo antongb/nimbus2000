@@ -16,7 +16,7 @@
 
 
 
-<header>
+<header class="group">
   <nav class="group">
       <ul class="header header-left group">
         <li class="logo"><a href="#">BeatSoup</a></li>
@@ -40,11 +40,10 @@
   </nav>
 </header>
 
+<section id="errors">
 
-<% if flash[:errors] %>
-  <%= flash[:errors].join("<br>").html_safe %>
-  <br><br>
-<% end %>
+</section>
+
 
 
 
@@ -55,7 +54,7 @@
   </section>
 
   <section id="queue">
-    fdfd
+    
   </section>
 
 </main>

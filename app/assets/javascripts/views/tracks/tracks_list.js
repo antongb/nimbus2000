@@ -10,9 +10,6 @@ Soundclone.Views.TracksListView = Backbone.CompositeView.extend({
 
   renderTracks: function () {
     this.collection.each(this.renderTrack.bind(this));
-  },
-  //
-  // comparator: function () {
-  //
-  // }
+  }
+
 })

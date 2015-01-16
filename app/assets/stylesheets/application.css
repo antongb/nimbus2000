@@ -171,6 +171,11 @@ h4 {
   font-weight: bold;
 }
 
+.sign-in-form {
+  margin-top: 59px;
+  display: block;
+}
+
 #app {
   margin: 53px auto;
   width: 90%;
@@ -187,7 +192,6 @@ h4 {
   float: right;
   width: 30%;
   display: block;
-
 }
 
 textarea {
@@ -267,4 +271,21 @@ input[type="text"],[type="password"], textarea {
 .play-button, .add-button {
   border-radius: 50%;
   float: left;
+}
+
+.queue-track {
+  padding: 10px 20px;
+}
+
+.current-track {
+  background: #F5DFE7;
+  border-radius: 10px;
+}
+
+.now-playing {
+  display: none;
+}
+
+.current-track > .now-playing {
+  display: block;
 }

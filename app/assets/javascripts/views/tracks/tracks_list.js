@@ -1,7 +1,9 @@
 Soundclone.Views.TracksListView = Backbone.CompositeView.extend({
 
+  subviewType: Soundclone.Views.TrackPlayer,
+
   renderTrack: function (track) {
-    var trackView = new Soundclone.Views.TrackPlayer({model: track, queue: false});
+    var trackView = new this.subviewType({model: track});
     this.addSubview(this.selector, trackView);
     return trackView;
   },

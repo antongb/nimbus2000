@@ -1,0 +1,23 @@
+<h4 class="now-playing">Now Playing:</h4>
+
+<a href="#/tracks/<%= track.id %>"><h4><%= track.escape('title') %></h4></a>
+
+<h4>Uploaded by <a href="#/users/<%= track.escape('uploader_id') %>"><%= track.escape('uploader_name') %></a></h4>
+
+<% if (track.get('cover_thumb')){ %>
+  <img src="<%= track.escape('cover_thumb') %>" alt="<%= track.escape('title') %>" />
+<% } %>
+
+<div class="audio">
+
+</div>
+
+
+<div class="group">
+<button class="play-button">▸</button>
+<button class="remove-button">-</button>
+</div>
+
+
+
+<br>

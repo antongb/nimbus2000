@@ -15,3 +15,5 @@ json.curr_user_likes current_user.likes?(track)
 json.uploader_name track.uploader.username
 
 json.tags track.tags, :id, :name
+
+json.created_at track.created_at.to_i

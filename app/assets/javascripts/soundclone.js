@@ -4,7 +4,11 @@ window.Soundclone = {
   Views: {},
   Routers: {},
   initialize: function() {
-    this.router = new Soundclone.Routers.Router({$mainEl: $("#content"), $navEl: $("nav")});
+    this.router = new Soundclone.Routers.Router({
+      $mainEl: $("#content"),
+      $errorEl: $("#errors"),
+      $queueEl: $("#queue")
+    });
     // Soundclone.getTags();
     Backbone.history.start();
   }

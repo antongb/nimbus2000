@@ -71,11 +71,19 @@ textarea {
 header {
   background: #D96198;
   color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1
 }
 
 header li {
   display: block;
   float: left;
+}
+
+main {
+  margin-top: 53px;
 }
 
 button {
@@ -95,6 +103,15 @@ header a, header button {
   background: transparent;
   padding: 10px 20px;
   text-decoration: none;
+}
+
+#errors {
+  background: #F28E63;
+  position: fixed;
+  top: 53px;
+  width: 100%;
+  text-align: center;
+  opacity: 0.7;
 }
 
 #follow-view {
@@ -155,22 +172,22 @@ h4 {
 }
 
 #app {
-  margin: auto;
+  margin: 53px auto;
   width: 90%;
 }
 
 #content {
   float: left;
-  width: 800px;
+  width: 70%;
   background: #eee;
-  padding: 10px 20px;
+  padding-top: 10px;
 }
 
 #queue {
   float: right;
-  width: 200px;
-  display: none;
-  background: red;
+  width: 30%;
+  display: block;
+
 }
 
 textarea {
@@ -245,4 +262,9 @@ input[type="text"],[type="password"], textarea {
 
 #tag-search-input:focus {
   color: black
+}
+
+.play-button, .add-button {
+  border-radius: 50%;
+  float: left;
 }

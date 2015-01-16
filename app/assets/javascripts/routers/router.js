@@ -2,7 +2,11 @@ Soundclone.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$mainEl = options.$mainEl;
-    this.$navEl = options.$navEl;
+    this.$errorEl = options.$errorEl;
+    this.$queueEl = options.$queueEl;
+    this._queueTracks = new Soundclone.Collections.Tracks();
+    this._queueView = new Soundclone.Views.QueueView({collection: this._queueTracks});
+    this.$queueEl.html(this._queueView.render().$el);
     this._renderNav(); // TODO
   },
 
@@ -122,14 +126,23 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  addToQueue: function (track, options) {
+    var trackView = this._queueView.renderTrack(track);
+    if (options && options.play) {
+      trackView.$(".player").get(0).play();
+      trackView.$(".player").prop("controls", true);
+    }
+  },
+
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$mainEl.html(view.render().$el);
+    this.$errorEl.empty();
   },
 
-  renderErrors: function () {
-
+  renderErrors: function (errors) {
+    this.$errorEl.html(errors.join("<br>"));
   },
 
   _renderNav: function () {

@@ -53,10 +53,10 @@ Soundclone.Views.TrackForm = Backbone.View.extend({
       success: function () {
         Backbone.history.navigate("tracks/" + that.model.id, {trigger: true});
       },
-      error: function (model, resp) {
-        var respArr = Array.prototype.slice.call(resp.responseText);
-        that.$el.append(resp.responseJSON.join("<br>"));
-      }
+      // error: function (model, resp) {
+      //   var respArr = Array.prototype.slice.call(resp.responseText);
+      //   that.$el.append(resp.responseJSON.join("<br>"));
+      // }
     })
 
   },

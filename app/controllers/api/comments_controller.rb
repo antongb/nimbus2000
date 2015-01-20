@@ -8,9 +8,9 @@ class Api::CommentsController < BackboneController
   def create
     @track = Track.includes({comments: [:user, parent_comment: :user]}, :likes).find(params[:track_id])
     @comment = @track.comments.new(comment_params)
+    @comment.user_id = current_user.id
 
     if @comment.save
-      current_user.comments << @comment
       render :show
     else
       render_errors(@comment)

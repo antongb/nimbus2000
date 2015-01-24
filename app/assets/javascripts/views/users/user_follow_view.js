@@ -1,6 +1,7 @@
 Soundclone.Views.UserFollow = Backbone.View.extend({
 
-  initialize: function () {
+  initialize: function (options) {
+    this.counts = options.counts || false;
     this.listenTo(this.model, "sync", this.render)
   },
 
@@ -11,7 +12,7 @@ Soundclone.Views.UserFollow = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({user: this.model}));
+    this.$el.html(this.template({user: this.model, counts: this.counts}));
     return this;
   },
 

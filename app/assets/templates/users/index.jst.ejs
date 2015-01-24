@@ -3,7 +3,9 @@
 
 <% users.each(function(user){ %>
 
-<li><a href="#/users/<%= user.id %>"><%= user.escape('username') %></a></li>
+<li class="group user"><a href="#/users/<%= user.id %>"><%= user.escape('username') %></a>
+	<div id="follow-<%= user.id %>"></div>
+</li>
 
 <% }) %>
 </ul>

@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     current_user.reset_session_token! if current_user
+    @current_user.destroy if @current_user.username == "Guest"
     session[:session_token] = nil
   end
 
@@ -36,6 +37,14 @@ class ApplicationController < ActionController::Base
 
   def current_user_owns_track?(track)
     current_user.id == track.uploader_id
+  end
+
+  def sign_in_guest
+    old_guest = User.find_by(username: "Guest")
+    old_guest.destroy if old_guest
+    guest = User.new(username: "Guest", password: "abcdefghij")
+    guest.followees << User.all
+    sign_in(guest)
   end
 
 end

@@ -1,9 +1,10 @@
-<form id="new-user" class="sign-in-form" action="/session" method="post">
+
+<form id="new-session" class="sign-in-form" action="/session" method="post">
   <h2>Please Sign In:</h2>
   <%= auth_token_input %>
   <label>
     <strong>Username:</strong>
-    <input type="text" name="user[username]" autofocus="autofocus">
+    <input type="text" name="user[username]" id="username" autofocus="autofocus">
   </label>
   <br>
   <label>
@@ -11,7 +12,16 @@
     <input type="password" name="user[password]" value="">
   </label>
   <br>
-  <button>Sign In!</button>
+  <button id="sign-in">Sign In!</button><button id="guest-sign-in">Sign In as Guest</button>
 </form>
 <br>
 Or <a href="/users/new">sign up!</a>
+
+<script type="text/javascript">
+  $("#guest-sign-in").on("click", function(event) {
+    event.preventDefault();
+    console.log("boo")
+    $("#username").val("Guest");
+    $("#new-session").submit();
+  })
+</script>

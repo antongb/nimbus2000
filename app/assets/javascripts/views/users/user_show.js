@@ -1,7 +1,7 @@
 Soundclone.Views.UserShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render)
-    this.followView = new Soundclone.Views.UserFollow({model: this.model});
+    this.followView = new Soundclone.Views.UserFollow({model: this.model, counts: true});
     this.renderTracks();
     this.addSubview("#follow-view", this.followView);
   },

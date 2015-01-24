@@ -9,18 +9,18 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  has_many :tracks, foreign_key: :uploader_id
-  has_many :playlists, foreign_key: :owner_id
+  has_many :tracks, foreign_key: :uploader_id, dependent: :destroy
+  has_many :playlists, foreign_key: :owner_id, dependent: :destroy
 
-  has_many :likes, foreign_key: :liker_id
+  has_many :likes, foreign_key: :liker_id, dependent: :destroy
   has_many :liked_tracks, through: :likes, source: :track
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
-  has_many :follower_follows, class_name: "Follow", foreign_key: :followee_id
+  has_many :follower_follows, class_name: "Follow", foreign_key: :followee_id, dependent: :destroy
   has_many :followers, through: :follower_follows, source: :follower
 
-  has_many :followee_follows, class_name: "Follow", foreign_key: :follower_id
+  has_many :followee_follows, class_name: "Follow", foreign_key: :follower_id, dependent: :destroy
   has_many :followees, through: :followee_follows, source: :followee
 
   has_many :stream_tracks, through: :followees, source: :tracks

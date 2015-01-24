@@ -1,6 +1,6 @@
 class Api::UsersController < BackboneController
   def index
-    @users = User.all
+    @users = User.includes(:followers).all
   end
 
   def new

@@ -3,6 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
+    if params[:user][:username] == "Guest"
+      sign_in_guest
+      redirect_to root_url
+      return
+    end
+
     user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]

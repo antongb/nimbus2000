@@ -42,8 +42,8 @@ class ApplicationController < ActionController::Base
   def sign_in_guest
     old_guest = User.find_by(username: "Guest")
     old_guest.destroy if old_guest
-    guest = User.new(username: "Guest", password: "abcdefghij")
-    guest.followees << User.all
+    guest = User.create(username: "Guest", password: "abcdefghij")
+    guest.followees << User.first
     sign_in(guest)
   end
 

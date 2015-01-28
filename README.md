@@ -17,7 +17,7 @@ BeatSoup is a social music-streaming web app inspired by [SoundCloud](http://www
 - Uses the HTML5 `<audio>` tag to play music
 - Backbone.js frontend consumes a RESTful JSON API served by Rails backend, allowing the app to be single-page
 - File upload and storage with Paperclip and Amazon AWS
-- Implements a CompositeView prototype in Backbone to better modularize view code and avoid unnecessary re-renders
+- Implements a CompositeView class in Backbone to better modularize view code and avoid unnecessary re-renders
 - Overrides Backbone.sync to better facilitate global error handling
 - Tag search/add fields have autocomplete powered by jQuery UI widget
 

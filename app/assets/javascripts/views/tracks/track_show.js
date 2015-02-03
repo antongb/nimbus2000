@@ -28,6 +28,11 @@ Soundclone.Views.TrackShow = Backbone.CompositeView.extend({
 
   destroyTrack: function (event) {
     event.preventDefault();
+
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
     this.model.destroy({
       success: function () {
         Backbone.history.navigate("", {trigger: true});

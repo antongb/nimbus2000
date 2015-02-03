@@ -18,14 +18,13 @@
   </header>
 <% end %>
 
-<% unless request.fullpath.match("backbone") %>
-
-  <% if flash[:errors] %>
-    <%= flash[:errors].join("<br>").html_safe %>
-    <br><br>
+<%# unless request.fullpath.match("backbone") %>
+<section id="errors">
+  <% if flash.now[:errors] %>
+    <%= flash.now[:errors].join("<br>").html_safe %>
   <% end %>
-
-<% end %>
+<%# end %>
+</section>
 
 <%= yield %>
 

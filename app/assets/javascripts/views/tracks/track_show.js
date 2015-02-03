@@ -13,7 +13,9 @@ Soundclone.Views.TrackShow = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click #delete-track": "destroyTrack"
+    "click #delete-track": "destroyTrack",
+        "click .play-button": "play",
+    "click .add-button": "add"
   },
 
   template: JST['tracks/show'],
@@ -31,5 +33,15 @@ Soundclone.Views.TrackShow = Backbone.CompositeView.extend({
         Backbone.history.navigate("", {trigger: true});
       }
     });
+  },
+
+    add: function (event) {
+    event.preventDefault();
+    Soundclone.router.addToQueue(this.model);
+  },
+
+  play: function (event) {
+    event.preventDefault();
+    Soundclone.router.addToQueue(this.model, {play: true});
   }
 });

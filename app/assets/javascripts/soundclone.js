@@ -14,6 +14,6 @@ window.Soundclone = {
   }
 };
 
-$(document).ready(function(){
-  Soundclone.initialize();
-});
+// $(document).ready(function(){
+//   Soundclone.initialize();
+// });

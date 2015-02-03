@@ -17,6 +17,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700);
 
 html, body, header, footer, section, article, div,
 strong, a, img, p, h1, h2, h3, h4, time, ul, li, small,
@@ -35,12 +36,12 @@ form, label, input, textarea, button {
 }
 
 body {
-  font-family: Open Sans, sans-serif;
+  font-family: Source Sans Pro, sans-serif;
 }
 
 a {
   color: #C53A79;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 ul {
@@ -83,7 +84,7 @@ header li {
 }
 
 main {
-  margin-top: 53px;
+  margin-top: 51px;
 }
 
 button {
@@ -108,7 +109,7 @@ header a, header button {
 #errors {
   background: #F28E63;
   position: fixed;
-  top: 53px;
+  top: 51px;
   width: 100%;
   text-align: center;
   opacity: 0.7;
@@ -190,6 +191,7 @@ h4 {
   width: 65%;
   background: #eee;
   padding: 10px;
+  border-radius: 5px;
 }
 
 #queue {
@@ -209,6 +211,10 @@ input[type="text"],[type="password"], textarea {
   background: white;
 }
 
+#track-tags {
+  margin-bottom: 20px;
+}
+
 #track-tags > strong {
   float: left;
 }
@@ -226,7 +232,7 @@ input[type="text"],[type="password"], textarea {
   border-radius: 10px;
   float: left;
   margin-left: 5px;
-  padding: 2px 7px;
+  padding: 2px 7px 3px 7px;
 }
 
 .tag a {
@@ -272,7 +278,7 @@ input[type="text"],[type="password"], textarea {
   color: black
 }
 
-.play-button, .add-button {
+.play-button, .add-button, .remove-button {
   border-radius: 50%;
   float: left;
 }
@@ -292,4 +298,8 @@ input[type="text"],[type="password"], textarea {
 
 .current-track > .now-playing {
   display: block;
+}
+
+.stream-tracks {
+  margin-top: 30px;
 }

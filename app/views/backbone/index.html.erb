@@ -1,4 +1,9 @@
 <script charset="utf-8">
+  
+  $(document).ready(function(){
+  Soundclone.initialize();
+  });
+
   window.currentUser = {
     id: <%= current_user.id %>,
     name: "<%= current_user.username %>",
@@ -38,10 +43,6 @@
 
   </nav>
 </header>
-
-<section id="errors">
-
-</section>
 
 
 

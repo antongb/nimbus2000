@@ -19,6 +19,9 @@ Soundclone.Views.CommentShow = Backbone.CompositeView.extend({
 
   destroyComment: function (event) {
     event.preventDefault();
+    if (!confirm("Are you sure?")) {
+      return;
+    }
     var that = this;
     this.model.destroy({
       success: function () {

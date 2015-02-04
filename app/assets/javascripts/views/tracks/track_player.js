@@ -9,7 +9,7 @@ Soundclone.Views.TrackPlayer = Backbone.View.extend({
     "click .add-button": "add"
   },
 
-  // className: 'group',
+  className: 'track-player',
 
   template: JST['tracks/player'],
 

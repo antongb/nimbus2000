@@ -20,7 +20,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700);
 
 html, body, header, footer, section, article, div,
-strong, a, img, p, h1, h2, h3, h4, time, ul, li, small,
+strong, a, img, p, h1, h2, h3, h4, h5, time, ul, li, small,
 form, label, input, textarea, button {
   margin: 0;
   padding: 0;
@@ -285,9 +285,28 @@ input[type="text"],[type="password"], textarea {
 
 .queue-track {
   padding: 10px 20px;
+  border-top: 1px solid #ccc;
+}
+
+.queue-track:first-child {
+  border-top: 0;
+}
+
+.current-track + .queue-track {
+  border-top: 0;
+}
+
+.track-player {
+  border-bottom: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.track-player:last-child {
+  border-bottom: 0;
 }
 
 .current-track {
+  border-top: 0;
   background: #F5DFE7;
   border-radius: 10px;
 }

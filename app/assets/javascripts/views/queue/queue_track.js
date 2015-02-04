@@ -33,6 +33,9 @@ Soundclone.Views.QueueTrack = Backbone.View.extend({
     this._active = true;
     this.$el.addClass("current-track");
     this.$(".audio").html(JST['queue/audio']({track: this.model}));
+    this.$("audio").on("ended", function() {
+      this.trigger("nextTrigger", this);
+    }.bind(this));
     // this.$(".player").get(0).play();
     // this.$(".player").prop("controls", true);
   },

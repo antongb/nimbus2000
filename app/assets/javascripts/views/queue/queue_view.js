@@ -10,7 +10,7 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
 
   events: {
     "click .prev-button": "prev",
-    "click .next-button": "next"
+    "click .next-button": "next",
   },
 
   selector: '#queue-tracks',
@@ -18,8 +18,9 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
   renderTrack: function (track) {
     var trackView = new Soundclone.Views.QueueTrack({model: track});
     this.addSubview(this.selector, trackView);
-    trackView.on("playTrigger", this.play.bind(this))
-    trackView.on("removeTrigger", this.removeTrack.bind(this))
+    trackView.on("playTrigger", this.play.bind(this));
+    trackView.on("removeTrigger", this.removeTrack.bind(this));
+    trackView.on("nextTrigger", this.next.bind(this));
     return trackView;
   },
 
@@ -47,11 +48,22 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
   },
 
   prev: function () {
-    this.play(this.tracks()[this._currentTrackNum - 1]);
+    var tracks = this.tracks(); // woo memoization
+    if (this._currentTrackNum === 0) {
+      this.play(tracks[tracks.length - 1]);
+    } else {
+      this.play(tracks[this._currentTrackNum - 1]);
+    }
   },
 
   next: function () {
-    this.play(this.tracks()[this._currentTrackNum + 1]);
+    console.log("next...");
+    var tracks = this.tracks();
+    if (this._currentTrackNum === tracks.length - 1) {
+      this.play(tracks[0]);
+    } else {
+      this.play(tracks[this._currentTrackNum + 1]);
+    }
   },
 
   removeTrack: function (trackView) {

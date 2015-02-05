@@ -15,9 +15,15 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
 
   selector: '#queue-tracks',
 
-  renderTrack: function (track) {
+  renderTrack: function (track, slide) {
     var trackView = new Soundclone.Views.QueueTrack({model: track});
-    this.addSubview(this.selector, trackView);
+    if (slide) {
+      trackView.$el.addClass("slide");
+      this.addSubview(this.selector, trackView);
+      window.setTimeout(function() {trackView.$el.removeClass("slide");}, 0);
+    } else {
+      this.addSubview(this.selector, trackView);
+    }
     trackView.on("playTrigger", this.play.bind(this));
     trackView.on("removeTrigger", this.removeTrack.bind(this));
     trackView.on("nextTrigger", this.next.bind(this));

@@ -198,6 +198,7 @@ h4 {
   float: right;
   width: 30%;
   display: block;
+  overflow: hidden;
 }
 
 textarea {
@@ -284,8 +285,11 @@ input[type="text"],[type="password"], textarea {
 }
 
 .queue-track {
+  position: relative;
+  top: 0;
   padding: 10px 20px;
   border-top: 1px solid #ccc;
+  -webkit-transition: top .5s;
 }
 
 .queue-track:first-child {
@@ -294,6 +298,12 @@ input[type="text"],[type="password"], textarea {
 
 .current-track + .queue-track {
   border-top: 0;
+}
+
+.queue-track.slide {
+  position: absolute;
+  z-index: -1;
+  top: -100px;
 }
 
 .track-player {

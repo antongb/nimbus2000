@@ -43,12 +43,10 @@ Soundclone.Views.TrackForm = Backbone.View.extend({
     that = this;
 
     _.extend(attrs.track, this.files);
-    console.log(attrs);
 
     this.model.set(attrs);
 
 
-    console.log(this.model.attributes);
     this.model.save({}, {
       success: function () {
         Backbone.history.navigate("tracks/" + that.model.id, {trigger: true});

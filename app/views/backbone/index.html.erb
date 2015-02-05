@@ -11,10 +11,10 @@
   }
 
   window.tags = <%= Tag.all.pluck(:name).to_json.html_safe %>
-
+  window.queueTracks = new Soundclone.Collections.Tracks();
+  window.queueTracks.reset(<%= get_queue_tracks %>)
   authToken = "<%= form_authenticity_token %>";
 
-  console.log(currentUser.playlists)
 </script>
 
 

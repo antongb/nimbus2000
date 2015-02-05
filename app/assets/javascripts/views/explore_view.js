@@ -12,7 +12,6 @@ Soundclone.Views.ExploreView = Backbone.CompositeView.extend({
       $(this).select();
     });
 
-    console.log(this.tagName)
 
     if (this.tagName && _.contains(window.tags, this.tagName)) {
     this.$("#tag-search-input").val(decodeURIComponent(this.tagName));

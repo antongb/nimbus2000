@@ -14,7 +14,6 @@ Soundclone.Collections.Playlists = Backbone.Collection.extend({
   },
 
   parse: function (response) {
-    console.log(response.playlists);
     if (response.playlists) {
       this.username = response.username;
       return response.playlists;

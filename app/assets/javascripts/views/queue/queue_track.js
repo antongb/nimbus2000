@@ -36,8 +36,6 @@ Soundclone.Views.QueueTrack = Backbone.View.extend({
     this.$("audio").on("ended", function() {
       this.trigger("nextTrigger", this);
     }.bind(this));
-    // this.$(".player").get(0).play();
-    // this.$(".player").prop("controls", true);
   },
 
   stop: function () {

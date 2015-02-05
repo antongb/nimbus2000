@@ -35,7 +35,6 @@ Soundclone.Views.TrackTagsView = Backbone.View.extend({
       type: 'DELETE',
       success: function (response) {
         $li.remove();
-        console.log(name);
         var newTags = _.reject(that.model.get('tags'), function (tag) {
           return tag.name === name;
         });

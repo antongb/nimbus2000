@@ -4,7 +4,7 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     this.$mainEl = options.$mainEl;
     this.$errorEl = options.$errorEl;
     this.$queueEl = options.$queueEl;
-    this._queueTracks = new Soundclone.Collections.Tracks();
+    this._queueTracks = window.queueTracks;
     this._queueView = new Soundclone.Views.QueueView({collection: this._queueTracks});
     this.$queueEl.html(this._queueView.render().$el);
     this._renderNav(); // TODO
@@ -120,7 +120,6 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   },
 
   explore: function (name) {
-    console.log("explore");
     var options = name ? {name: name} : {}
     var view = new Soundclone.Views.ExploreView(options);
     this._swapView(view);

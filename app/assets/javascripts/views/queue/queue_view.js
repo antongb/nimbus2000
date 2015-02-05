@@ -1,7 +1,9 @@
 Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
 
   initialize: function () {
+    $.cookie.json = true;
     this._currentTrackNum = 0;
+    this._tracksArr = $.cookie('queue') || [];
   },
 
   template: JST['queue/queue'],
@@ -15,9 +17,17 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
 
   selector: '#queue-tracks',
 
+  renderTracks: function() {
+    _.each(this._tracksArr, function(el) {
+      this.renderTrack(this.collection.get(el));
+    }, this);
+  },
+
   renderTrack: function (track, slide) {
     var trackView = new Soundclone.Views.QueueTrack({model: track});
     if (slide) {
+      this._tracksArr.push(track.id);
+      $.cookie('queue', this._tracksArr);
       trackView.$el.addClass("slide");
       this.addSubview(this.selector, trackView);
       window.setTimeout(function() {trackView.$el.removeClass("slide");}, 0);
@@ -63,7 +73,6 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
   },
 
   next: function () {
-    console.log("next...");
     var tracks = this.tracks();
     if (this._currentTrackNum === tracks.length - 1) {
       this.play(tracks[0]);
@@ -77,6 +86,8 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
       this._currentTrack = null;
     }
     trackView.off();
+    this._tracksArr.splice(this.subviews()[this.selector].indexOf(trackView), 1);
+    $.cookie('queue', this._tracksArr);
     this.removeSubview(this.selector, trackView);
   }
 })

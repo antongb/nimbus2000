@@ -90,7 +90,6 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
     this._tracksArr.splice(idx, 1);
     $.cookie('queue', this._tracksArr);
     var that = this;
-    // this.subviews()[this.selector][idx + 1] && this.subviews()[this.selector][idx + 1].$el.addClass("first");
     window.setTimeout(function() {
       that.removeSubview(that.selector, trackView);
     }, 500)    

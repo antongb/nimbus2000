@@ -43,5 +43,6 @@ Soundclone.Views.QueueTrack = Backbone.View.extend({
     this._active = false;
     this.$el.removeClass("current-track");
     this.$(".audio").empty();
+    
   }
 })

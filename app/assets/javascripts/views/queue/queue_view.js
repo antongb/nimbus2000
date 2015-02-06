@@ -86,13 +86,14 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
       this._currentTrack = null;
     }
     trackView.off();
-    this._tracksArr.splice(this.subviews()[this.selector].indexOf(trackView), 1);
+    var idx = this.subviews()[this.selector].indexOf(trackView);
+    this._tracksArr.splice(idx, 1);
     $.cookie('queue', this._tracksArr);
-    trackView.$el.addClass("fade");
     var that = this;
-
+    // this.subviews()[this.selector][idx + 1] && this.subviews()[this.selector][idx + 1].$el.addClass("first");
     window.setTimeout(function() {
       that.removeSubview(that.selector, trackView);
     }, 500)    
+    trackView.$el.addClass("fade squeeze");
   }
 })

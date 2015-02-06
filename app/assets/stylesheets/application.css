@@ -307,20 +307,26 @@ input[type="text"],[type="password"], textarea {
 }
 
 .queue-track {
+  overflow: hidden;
   height: 199px;
+  width: 220px;
   padding: 10px 20px;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   opacity: 1;
-  -webkit-transition: opacity .5s, height .5s;
-  -moz-transition: opacity .5s, height .5s;
+  -webkit-transition: opacity .5s, height .5s, padding .5s;
+  -moz-transition: opacity .5s, height .5s, padding .5s;
 }
 
-.queue-track:first-child {
-  border-top: 0;
+.queue-track:last-child {
+  border-bottom: 0;
+}
+
+.queue-track.first {
+  border-bottom: 0;
 }
 
 .current-track + .queue-track {
-  border-top: 0;
+  border-bottom: 0;
 }
 
 .queue-track.fade {
@@ -328,7 +334,10 @@ input[type="text"],[type="password"], textarea {
 }
 
 .queue-track.squeeze {
-  height: 1px;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .queue-track .buttons {

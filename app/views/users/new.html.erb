@@ -1,4 +1,4 @@
-<form id="new-user" class="sign-in-form" action="/users" method="post">
+<form id="new-user" class="sign-in-form sign-up-form group" action="/users" method="post">
   <h2>Please Sign Up:</h2>
   <%= auth_token_input %>
   <label>
@@ -16,7 +16,7 @@
     <input type="password" name="user[password_confirmation]" value="">
   </label>
   <br>
-  <button>Sign Up!</button>
+  <div class="sign-in-buttons"><button>Sign Up!</button><br><div style="margin:">Or <a href="/session/new">sign in!</a></div></div>
 </form>
 <br>
-Or <a href="/session/new">sign in!</a>
+

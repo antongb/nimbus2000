@@ -1,5 +1,4 @@
-
-<form id="new-session" class="sign-in-form" action="/session" method="post">
+<form id="new-session" class="sign-in-form group" action="/session" method="post">
   <h2>Please Sign In:</h2>
   <%= auth_token_input %>
   <label>
@@ -12,10 +11,10 @@
     <input type="password" name="user[password]" value="">
   </label>
   <br>
-  <button id="sign-in">Sign In!</button><button id="guest-sign-in">Sign In as Guest</button>
+  <div class="sign-in-buttons"><button id="sign-in">Sign In!</button><button id="guest-sign-in">Sign In as Guest</button><br><div style="float: right">Or <a href="/users/new">sign up!</a></div></div>
+  
 </form>
-<br>
-Or <a href="/users/new">sign up!</a>
+
 
 <script type="text/javascript">
   $("#guest-sign-in").on("click", function(event) {

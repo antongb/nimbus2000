@@ -8,7 +8,7 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
 
   template: JST['queue/queue'],
 
-  className: 'queue-view',
+  className: 'queue-view group',
 
   events: {
     "click .prev-button": "prev",
@@ -28,9 +28,9 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
     if (slide) {
       this._tracksArr.push(track.id);
       $.cookie('queue', this._tracksArr);
-      trackView.$el.addClass("slide");
+      trackView.$el.addClass("fade");
       this.addSubview(this.selector, trackView);
-      window.setTimeout(function() {trackView.$el.removeClass("slide");}, 0);
+      window.setTimeout(function() {trackView.$el.removeClass("fade");}, 0);
     } else {
       this.addSubview(this.selector, trackView);
     }
@@ -88,6 +88,11 @@ Soundclone.Views.QueueView = Soundclone.Views.TracksListView.extend({
     trackView.off();
     this._tracksArr.splice(this.subviews()[this.selector].indexOf(trackView), 1);
     $.cookie('queue', this._tracksArr);
-    this.removeSubview(this.selector, trackView);
+    trackView.$el.addClass("fade");
+    var that = this;
+
+    window.setTimeout(function() {
+      that.removeSubview(that.selector, trackView);
+    }, 500)    
   }
 })

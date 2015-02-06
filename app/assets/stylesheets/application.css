@@ -244,13 +244,14 @@ h4 {
 
 #queue {
   position: fixed;
-  /*float: right;*/
   width: 50%;
   left: 65%;
   display: block;
   overflow: scroll;
-  height: 100%;
+  height: 90%;
   margin-left: 100px;
+  top: 53px;
+  bottom: 103px;
 }
 
 textarea {

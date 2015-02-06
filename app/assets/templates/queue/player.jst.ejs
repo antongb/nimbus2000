@@ -1,6 +1,6 @@
 <h4 class="now-playing">Now Playing:</h4>
 
-<a href="#/tracks/<%= track.id %>"><h4><%= track.escape('title') %></h4></a>
+<h4><a href="#/tracks/<%= track.id %>"><%= track.escape('title') %></a></h4>
 
 <h5>Uploaded by <a href="#/users/<%= track.escape('uploader_id') %>"><%= track.escape('uploader_name') %></a></h5>
 

@@ -243,10 +243,14 @@ h4 {
 }
 
 #queue {
-  float: right;
-  width: 30%;
+  position: fixed;
+  /*float: right;*/
+  width: 50%;
+  left: 65%;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
+  height: 100%;
+  margin-left: 100px;
 }
 
 textarea {
@@ -337,22 +341,22 @@ input[type="text"],[type="password"], textarea {
   height: 199px;
   width: 220px;
   padding: 10px 20px;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
   opacity: 1;
   -webkit-transition: opacity .5s, height .5s, padding .5s;
   -moz-transition: opacity .5s, height .5s, padding .5s;
 }
 
-.queue-track:last-child {
-  border-bottom: 0;
+.queue-track:first-child {
+  border-top: 0;
 }
 
-.queue-track.first {
-  border-bottom: 0;
+.queue-track.noborder {
+  border-top: 0;
 }
 
 .current-track + .queue-track {
-  border-bottom: 0;
+  border-top: 0;
 }
 
 .queue-track.fade {
@@ -363,7 +367,7 @@ input[type="text"],[type="password"], textarea {
   height: 0;
   padding-top: 0;
   padding-bottom: 0;
-  border-bottom: 0;
+  border-top: 0;
 }
 
 .queue-track .buttons {
@@ -383,6 +387,7 @@ input[type="text"],[type="password"], textarea {
   border-top: 0;
   background: #F5DFE7;
   border-radius: 10px;
+  height: 280px;
 }
 
 .now-playing {

@@ -7,7 +7,7 @@ Soundclone.Views.QueueTrack = Backbone.View.extend({
     "click .remove-button": "removeTrigger"
   },
 
-  className: "queue-track",
+  className: "queue-track group",
 
   render: function () {
       this.$el.html(this.template({track: this.model}));

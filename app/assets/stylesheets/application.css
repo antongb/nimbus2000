@@ -41,7 +41,13 @@ body {
 
 a {
   color: #C53A79;
+  -webkit-transition: color .5s;
+  -moz-transition: color .5s;
   /*font-weight: bold;*/
+}
+
+a:hover {
+  color: #920947;
 }
 
 ul {
@@ -95,6 +101,12 @@ button {
   border-radius: 5px;
   margin: 5px;
   cursor: pointer;
+  -webkit-transition: background-color .5s;
+  -moz-transition: background-color .5s;
+}
+
+button:hover {
+  background: #920947;
 }
 
 header a, header button {
@@ -104,6 +116,14 @@ header a, header button {
   background: transparent;
   padding: 10px 20px;
   text-decoration: none;
+  border-radius: 5px;
+  -webkit-transition: background-color .5s;
+  -moz-transition: background-color .5s;
+}
+
+header a:hover, header button:hover {
+  color: #fff;
+  background: #920947;
 }
 
 #errors {
@@ -155,9 +175,11 @@ button.sign-out {
   font-size: 16px;
 }
 
-.logo {
+.logo a{
   font-size: 24px;
   font-weight: bold;
+  margin: 5px 0;
+  padding: 5px 20px;
 }
 
 nav {
@@ -285,11 +307,12 @@ input[type="text"],[type="password"], textarea {
 }
 
 .queue-track {
-  position: relative;
-  top: 0;
+  height: 199px;
   padding: 10px 20px;
   border-top: 1px solid #ccc;
-  -webkit-transition: top .5s;
+  opacity: 1;
+  -webkit-transition: opacity .5s, height .5s;
+  -moz-transition: opacity .5s, height .5s;
 }
 
 .queue-track:first-child {
@@ -300,10 +323,16 @@ input[type="text"],[type="password"], textarea {
   border-top: 0;
 }
 
-.queue-track.slide {
-  position: absolute;
-  z-index: -1;
-  top: -100px;
+.queue-track.fade {
+  opacity: 0;
+}
+
+.queue-track.squeeze {
+  height: 1px;
+}
+
+.queue-track .buttons {
+  float: left;
 }
 
 .track-player {

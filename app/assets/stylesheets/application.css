@@ -198,10 +198,36 @@ h4 {
   font-weight: bold;
 }
 
+
 .sign-in-form {
-  margin-top: 59px;
+  width: 300px;
   display: block;
+  margin: 100px auto 0 auto;
+  background: #eee;
+  border-radius: 5px;
+  padding: 20px;
 }
+
+.sign-up-form {
+  width: 350px;
+}
+
+
+.sign-in-form label {
+  float: right;
+  margin-bottom: 5px;
+}
+
+.sign-in-form h2 {
+  text-align: center;
+  margin-right: 0;
+  margin-bottom: 15px;
+}
+
+.sign-in-buttons {
+  float: right;
+}
+
 
 #app {
   margin: 53px auto;

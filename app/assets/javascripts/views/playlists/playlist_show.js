@@ -5,7 +5,9 @@ Soundclone.Views.PlaylistShow = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click button.remove-track": "removeTrack"
+    "click button.remove-track": "removeTrack",
+    "click button.add-all": "addAll",
+    "click button.add-all-play": "AddAllAndPlay"
   },
 
   template: JST['playlists/show'],
@@ -35,5 +37,20 @@ Soundclone.Views.PlaylistShow = Backbone.CompositeView.extend({
         view.model.fetch();
       }
     });
+  },
+
+  addAll: function(event) {
+    event.preventDefault();
+    this.model.tracks().each(function(track) {
+      Soundclone.router.addToQueue(track);
+    });
+  },
+
+  AddAllAndPlay: function(event) {
+    event.preventDefault();
+    this.model.tracks().each(function(track, idx) {
+      var play = idx === 0 ? {play: true} : {}
+      Soundclone.router.addToQueue(track, play);
+    })
   }
 })

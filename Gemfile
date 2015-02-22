@@ -32,7 +32,7 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-ui-rails'
-# gem 'taglib-ruby'
+gem 'bootstrap-sass'
 
 group :development do
   gem 'better_errors'

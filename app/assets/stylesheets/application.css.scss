@@ -14,10 +14,9 @@
  *= require_self
  *= require jquery.ui.autocomplete
  */
-/*@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700);*/
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700);
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 html, body, header, footer, section, article, div,
 strong, a, img, p, h1, h2, h3, h4, h5, time, ul, li, small,
@@ -40,14 +39,13 @@ body {
 }
 
 a {
-  color: #C53A79;
+  color: #f99820;
   -webkit-transition: color .5s;
   -moz-transition: color .5s;
-  /*font-weight: bold;*/
 }
 
 a:hover {
-  color: #920947;
+  color: #2081f9;
 }
 
 ul {
@@ -76,12 +74,18 @@ textarea {
 }
 
 header {
-  background: #D96198;
+  background: #f99820;
   color: #fff;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1
+}
+.hs {
+  background: transparent;
+  position: absolute;
+  color: #c9c9c9;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 header li {
@@ -97,7 +101,7 @@ button {
   padding: 5px 10px;
   font-size: 12px;
   color: #fff;
-  background: #C53A79;
+  background: #f99820;
   border-radius: 5px;
   margin: 5px;
   cursor: pointer;
@@ -106,7 +110,7 @@ button {
 }
 
 button:hover {
-  background: #920947;
+  background: #2081f9;
 }
 
 header a, header button {
@@ -123,11 +127,11 @@ header a, header button {
 
 header a:hover, header button:hover {
   color: #fff;
-  background: #920947;
+  background: #2081f9;
 }
 
 #errors {
-  background: #F28E63;
+  background: #f99820;
   position: fixed;
   top: 51px;
   width: 100%;
@@ -157,6 +161,7 @@ li.user div {
   font-weight: bold;
   display: block;
   padding: 5px 0;
+  // opacity: 0.5;
 }
 
 .header li:not(.logo) {
@@ -185,8 +190,6 @@ button.sign-out {
 nav {
   margin: auto;
   width: 95%;
-  /*border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;*/
 }
 
 h2 {
@@ -203,9 +206,23 @@ h4 {
   width: 300px;
   display: block;
   margin: 100px auto 0 auto;
-  background: #eee;
+  background: #fff;
   border-radius: 5px;
   padding: 20px;
+  -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+  animation: mymove 0s infinite;
+  // box-shadow: 0px 0px 15px 10px #f99820;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+
+  50% {box-shadow: 0px 0px 15px 10px #fff;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+  50% {box-shadow: 0px 0px 15px 10px #f99820;}
 }
 
 .sign-up-form {
@@ -282,7 +299,7 @@ input[type="text"],[type="password"], textarea {
 .tag {
   position: relative;
   display: block;
-  background: #C53A79;
+  background: #f99820;
   border-radius: 10px;
   float: left;
   margin-left: 5px;
@@ -392,9 +409,10 @@ input[type="text"],[type="password"], textarea {
 
 .current-track {
   border-top: 0;
-  background: #F5DFE7;
+  background: #eee;
   border-radius: 10px;
   height: 280px;
+  width: 330px;
 }
 
 .now-playing {
@@ -407,4 +425,17 @@ input[type="text"],[type="password"], textarea {
 
 .stream-tracks {
   margin-top: 30px;
+}
+
+.jumbotron{
+  background-image:url("http://i.imgur.com/K3kI3ax.jpg");
+  // z-index: -100;
+  color: #c9c9c9;
+  margin-bottom: 0px;
+  // background-position: 0% 25%;
+  background-size: cover;
+  height: 700px;
+  // background-repeat: no-repeat;
+  // text-shadow: black 0.3em 0.3em 0.3em;
+  text-shadow: -1px 0 #eee, 0 1px #eee, 1px 0 #eee, 0 -1px #eee;
 }

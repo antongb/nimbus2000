@@ -1,34 +1,57 @@
-# [BeatSoup](http://www.beatsoup.me)
+# AudioNimbus
 
-BeatSoup is a social music-streaming web app inspired by [SoundCloud](http://www.soundcloud.com), built primarily with Ruby on Rails and Backbone.js. 
 
-## Features
-- Single-page app (except user registration and login pages)
-- Plays music (duh)
-- Now-playing queue persists across a user's session, play is never interrupted by navigation around the site
-- Users can follow other users, with "Stream" page showing followed users' uploaded tracks
-- Users can create playlists and add/remove tracks to/from their own playlists
-- Playlists can be "private," only visible to that user
-- Users can leave comments on songs and can edit/delete their own comments
-- Comments can be replies to previous comments
-- Songs can be tagged arbitrarily, and users can search by these tags
 
-## Technical Details
-- Uses the HTML5 `<audio>` tag to play music
-- Backbone.js frontend consumes a RESTful JSON API served by Rails backend, allowing the app to be single-page
-- File upload and storage with Paperclip and Amazon AWS
-- Implements a CompositeView class in Backbone to better modularize view code and avoid unnecessary re-renders
-- Overrides Backbone.sync to better facilitate global error handling
-- Tag search/add fields have autocomplete powered by jQuery UI widget
+## Minimum Viable Product
+AudioNimbus is a music app inspired by SoundCloud, built on Rails and Backbone.
+Users can:
 
-## TODO
-- Custom player controls (CSS? HTML5 Canvas?)
-- Make now-playing queue persist past user ending session
-- User profiles
-- Fix occasional server timeouts during file upload using delayed_job
-- Improve error handling
-- Reposting
-- Pin comments to track times, SC-style
-- Improve comment view in general
-- Tidy up CSS
-- Waveforms, mayyybe
+- [x] Create accounts
+- [x] Create sessions (log in)
+- [x] Play tracks
+- [x] Upload tracks
+- [x] Tag tracks
+- [x] View tracks
+- [x] Follow users
+- [x] View a feed of tracks from followed users
+- [x] Search for tracks by title
+- [x] Search for tracks by tag
+
+## Design Docs
+* [View Wireframes][views]
+* [DB schema][schema]
+
+[views]: ./docs/views.md
+[schema]: ./docs/schema.md
+
+## Implementation Timeline
+
+### Phase 1: User Authentication, Uploading/Showing/Playing Tracks (~2.5 day)
+I will implement user authentication in Rails based on the practices learned at
+App Academy. By the end of this phase users will be able to upload, view and
+play tracks.
+
+
+### Phase 2: JSON API and First Backbone Views (~2.5 days)
+I will add API routes to serve user and track data as JSON, then add Backbone
+models and collections that fetch data from those routes. By the end of this
+phase, the existing Rails views will have been ported over to Backbone.
+
+
+### Phase 3: Following and Tagging Tracks (~1 days)
+I will implement the ability for users to follow other users and tag tracks.
+A User's feed/stream will show tracks uploaded by user's that they follow. Tags
+will appear under a track on the track's show view.
+
+
+### Phase 4: Searching for Tracks (~1 days)
+I will implement the ability to search for tracks by either their track name or
+by tag names. At this stage I will start putting finishing touches on my page
+layout.
+
+
+### Bonus Features (TBD)
+- [x] Trending feed (from follows)
+- [x] Track comments
+- [x] User Profile
+# AudioNimbus

@@ -7,7 +7,6 @@ Soundclone.Routers.Router = Backbone.Router.extend({
     this._queueTracks = window.queueTracks;
     this._queueView = new Soundclone.Views.QueueView({collection: this._queueTracks});
     this.$queueEl.html(this._queueView.render().$el);
-    this._renderNav(); // TODO
   },
 
   routes: {
@@ -142,10 +141,6 @@ Soundclone.Routers.Router = Backbone.Router.extend({
   renderErrors: function (errors) {
     this.$errorEl.html(errors.join("<br>"));
   },
-
-  _renderNav: function () {
-    // TODO
-  }
 
 
 });

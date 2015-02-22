@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BeatSoup</title>
+  <title>AudioNimbus</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'jquery' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% unless signed_in? %>
-  <header>
-    <nav class="group sign-in-header">
+    <% unless signed_in? %>
+      <header class="hs">
+        <nav class="group sign-in-header">
 
-      <h1>BeatSoup</h1>
+          <h1>AudioNimbus</h1>
 
-    </nav>
-  </header>
-<% end %>
+        </nav>
+      </header>
+    <% end %>
 
-<%# unless request.fullpath.match("backbone") %>
-<section id="errors">
-  <% if flash.now[:errors] %>
-    <%= flash.now[:errors].join("<br>").html_safe %>
-  <% end %>
-<%# end %>
-</section>
+    <%# unless request.fullpath.match("backbone") %>
+    <section id="errors">
+      <% if flash.now[:errors] %>
+        <%= flash.now[:errors].join("<br>").html_safe %>
+      <% end %>
+    <%# end %>
+    </section>
 
-<%= yield %>
-
+    <% if signed_in? %>
+        <%= yield %>
+    <% else %>
+      <div class="jumbotron">
+        <!-- <video src="http://vjs.zencdn.net/v/oceans.mp4" autoplay loop muted></video> -->
+        <%= yield %>
+      </div>
+    <% end %>
 </body>
 </html>

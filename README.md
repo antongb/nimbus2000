@@ -17,13 +17,6 @@ Users can:
 - [x] Search for tracks by title
 - [x] Search for tracks by tag
 
-## Design Docs
-* [View Wireframes][views]
-* [DB schema][schema]
-
-[views]: ./docs/views.md
-[schema]: ./docs/schema.md
-
 ## Implementation Timeline
 
 ### Phase 1: User Authentication, Uploading/Showing/Playing Tracks (~2.5 day)

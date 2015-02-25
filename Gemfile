@@ -33,6 +33,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
+# gem 'new-relic'
 
 group :development do
   gem 'better_errors'
